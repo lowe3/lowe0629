@@ -1,1 +1,1 @@
-web: python views.py
+web: gunicorn --pythonpath LinebotFunc LinebotFunc.urls
