@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath LinebotFunc LinebotFunc.urls
+web: gunicorn --pythonpath LinebotFunc LinebotFunc.wsgi
