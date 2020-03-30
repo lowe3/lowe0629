@@ -24,10 +24,11 @@ def callback(request):
 		except LineBotApiError:
 			return HttpResponseBadRequest()
 
-		for event in events:
-			if isinstance(event, MessageEvent):
-				if isinstance(event.message, TextMessage):
-					line_bot_api.reply_message("1")
+		line_bot_api.reply_message("1")
+		#for event in events:
+		#	if isinstance(event, MessageEvent):
+		#		if isinstance(event.message, TextMessage):
+					
 					#mtext = event.message.text
 					#if mtext == '女/140/40/18':
 					#	func.sendText(event1)
