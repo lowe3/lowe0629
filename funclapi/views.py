@@ -27,13 +27,14 @@ def callback(request):
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
-					mtext = event.message.text
-					if mtext == '女/140/40/18':
-						func.sendText(event1)
-					if mtext == '好':
-						func.sendQuickreply(event)
-					else
-						text = "。"
+					line_bot_api.reply_message("1")
+					#mtext = event.message.text
+					#if mtext == '女/140/40/18':
+					#	func.sendText(event1)
+					#if mtext == '好':
+					#	func.sendQuickreply(event)
+					#else
+					#	text = "。"
 		return HttpResponse()
 	else:
 		return HttpResponseBadRequest()
