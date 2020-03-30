@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-Hant'
 
-TIME_ZONE = 'Asis/Taipei'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 

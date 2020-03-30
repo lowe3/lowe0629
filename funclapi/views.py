@@ -13,7 +13,6 @@ parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
 
 @csrf_exempt
-@app.route('/callback', methods=['POST'])
 def callback(request):
 	if request.method == 'POST':
 		signature = request.META['HTTP_X_LINE_SIGNATURE']
@@ -26,19 +25,12 @@ def callback(request):
 		except LineBotApiError:
 			return HttpResponseBadRequest()
 			
+		
 			
-		if request.message.text == 'test':  # 如果使用者輸入的文字是 test
-        # 就發送訊息給使用者
-        line_bot_api.push_message(
-            user_id,  # 使用者id
-            TextSendMessage(text='收到test2')
-		)
-			
-		#line_bot_api.reply_message("1")
-		#for event in events:
-		#	if isinstance(event, MessageEvent):
-		#		if isinstance(event.message, TextMessage):
-		#			
+		for event in events:
+			if isinstance(event, MessageEvent):
+				if isinstance(event.message, TextMessage):
+					line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
 		#			mtext = event.message.text
 		#			if mtext == '女/140/40/18':
 		#				func.sendText(event1)
