@@ -34,10 +34,8 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '140':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1024，請回傳好。'))
-					if mtext == '好':
-						func.sendText(event1)
-		#			elif mtext == '好':
-		#				func.sendQuickreply(event)
+					elif mtext == '好':
+						func.sendQuickreply(event)
 					
 		return HttpResponse()
 	else:

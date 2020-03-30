@@ -16,7 +16,7 @@ def sendText(event1):
 def sendQuickreply(event):
 	try:
 		message = TextSendMessage(
-			text='請選擇您的運動頻率',
+		text='請選擇您的運動頻率',
 		quick_reply=QuickReply(
 			items=[
 				QuickReplyButton(
