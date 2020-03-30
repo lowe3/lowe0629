@@ -30,8 +30,7 @@ def callback(request):
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
-					#line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
-					mtext = event.message.text
+				mtext = event.message.text
 					if mtext == '140':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='嗨'))
 
