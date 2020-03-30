@@ -33,7 +33,7 @@ def callback(request):
 					#line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
 					mtext = event.message.text
 					if mtext == '140':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='嗨'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1024，請回傳好。'))
 
 						
 						#func.sendText(event1)
