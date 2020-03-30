@@ -30,7 +30,7 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '女/140/40/18':
 						func.sendText(event1)
-					elif mtext == '好':
+					if mtext == '好':
 						func.sendQuickreply(event)
 					else
 						text = "。"
