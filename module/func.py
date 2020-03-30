@@ -10,9 +10,9 @@ def sendText(event1):
 		message = TextSendMessage(
 			text = "你的基礎代謝率為1024，請回傳好。"
 		)
-		line_bot_api.reply_message(event.reply_token,message)
+		line_bot_api.reply_message(event1.reply_token,message)
 	except:
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+		line_bot_api.reply_message(event1.reply_token,TextSendMessage(text='發生錯誤!'))
 def sendQuickreply(event):
 	try:
 		message = TextSendMessage(
