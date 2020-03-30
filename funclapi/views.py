@@ -32,7 +32,8 @@ def callback(request):
 						func.sendText(event1)
 					elif mtext == '好':
 						func.sendQuickreply(event)
-					
+					else
+						text = "。"
 		return HttpResponse()
 	else:
 		return HttpResponseBadRequest()
