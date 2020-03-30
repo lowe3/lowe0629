@@ -31,9 +31,9 @@ def callback(request):
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
-		#			mtext = event.message.text
-		#			if mtext == '女/140/40/18':
-		#				func.sendText(event1)
+					mtext = event.message.text
+					if mtext == '女/140/40/18':
+						func.sendText(event1)
 		#			elif mtext == '好':
 		#				func.sendQuickreply(event)
 					
