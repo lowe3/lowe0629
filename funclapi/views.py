@@ -24,9 +24,12 @@ def callback(request):
 			return HttpResponseForbidden()
 		except LineBotApiError:
 			return HttpResponseBadRequest()
-
-		if event.message.text == "文字":
-			line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+			
+		message = {
+			type: 'text',
+			text: '123'
+		}
+		line_bot_api.reply_message(reply_token,message)
 			
 		#line_bot_api.reply_message("1")
 		#for event in events:
