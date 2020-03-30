@@ -20,22 +20,22 @@ def sendQuickreply(event):
 		quick_reply=QuickReply(
 			items=[
 				QuickReplyButton(
-				action=MessageAction(label='久坐',text='久坐')
+				action=MessageAction(label="久坐",text="久坐")
 			),
 				QuickReplyButton(
-				action=MessageAction(label='除了通勤之外，不運動',text='除了通勤之外，不做其他運動')
+				action=MessageAction(label="除了通勤之外，不運動",text="除了通勤之外，不做其他運動'")
 			),  
 				QuickReplyButton(
-				action=MessageAction(label='每周有一兩天',text='每周有一兩天會做運動')
+				action=MessageAction(label="每周有一兩天",text="每周有一兩天會做運動")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label='每周有三四天',text='每周有三四天會做運動')
+				action=MessageAction(label="每周有三四天",text="每周有三四天會做運動")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label='每周有五六天',text='每周有五六天會做運動')
+				action=MessageAction(label="每周有五六天",text="每周有五六天會做運動")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label='天天都運動',text='天天都會做運動')
+				action=MessageAction(label="天天都運動",text="天天都會做運動")
 				),
 			]))
 		line_bot_api.reply_message(event.reply_token,message)
