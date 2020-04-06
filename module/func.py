@@ -8,7 +8,7 @@ line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 def sendText(event1):
 	try:
 		message = TextSendMessage(
-			text = '你的基礎代謝率為1024，請回傳好。'
+			text = "你的基礎代謝率為1024，請回傳好。"
 		)
 		line_bot_api.reply_message(event1.reply_token,message)
 	except:
