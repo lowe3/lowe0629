@@ -38,10 +38,10 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1740，請回傳好。'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
-					
+					else :
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
 	else:
-		line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))	
 		return HttpResponseBadRequest()
 
 
