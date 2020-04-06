@@ -34,11 +34,14 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '女/140/40/18':						
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1024，請回傳好。'))
+					elif mtext == '男/180/70/18':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1740，請回傳好。'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
 					
 		return HttpResponse()
 	else:
+		line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))	
 		return HttpResponseBadRequest()
 
 
