@@ -38,6 +38,16 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1740，請回傳好。'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
+					elif mtext == '久坐':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
+					elif mtext == '每周有輕鬆的運動3-5天':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.375。'))
+					elif mtext == '每周有中等強度的運動3-5天':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.55。'))
+					elif mtext == '每周有高強度的運動6-7天':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.725。'))
+					elif mtext == '勞力密集的工作或每天訓練甚至一天訓練兩次':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.9。'))						
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
