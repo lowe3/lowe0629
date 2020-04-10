@@ -16,7 +16,6 @@ parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
 @csrf_exempt
 def callback(request):
-	user_id = event.source.user_id
 	if request.method == 'POST':
 		signature = request.META['HTTP_X_LINE_SIGNATURE']
 		body = request.body.decode('utf-8')
