@@ -12,7 +12,12 @@ line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
 
+
+
 @csrf_exempt
+def handle_message(event):
+    # 取得使用者的ID，使用者ID 與 給別人加好友的Line ID不同
+    user_id = event.source.user_id
 def callback(request):
 	if request.method == 'POST':
 		signature = request.META['HTTP_X_LINE_SIGNATURE']
