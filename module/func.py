@@ -2,17 +2,28 @@ from django.conf import settings
 
 from linebot import LineBotApi
 from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction
+import random
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
-def sendText(event1):
+def sendText(event):
 	try:
 		message = TextSendMessage(
 			text = "你的基礎代謝率為1024，請回傳好。"
 		)
-		line_bot_api.reply_message(event1.reply_token,message)
+		line_bot_api.reply_message(event.reply_token,message)
 	except:
-		line_bot_api.reply_message(event1.reply_token,TextSendMessage(text='發生錯誤!'))
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+def sendText(event1):
+	try:
+		message = TextSendMessage(
+			text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
+			'每天早晨醒後，可以先喝一杯白開水，這樣可以預防膽結石。',
+			'睡前三小時不要吃東西。會胖。)]'
+		)
+		line_bot_api.reply_message(event.reply_token,message)
+	except:
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 def sendQuickreply(event):
 	try:
 		message = TextSendMessage(
