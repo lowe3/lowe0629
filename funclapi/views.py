@@ -62,6 +62,8 @@ def callback(request):
 							'三餐應以全穀雜糧為主食。',
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
+					elif mtext == '推薦菜單':
+						func.sendImage(event)
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
