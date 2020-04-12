@@ -27,8 +27,6 @@ def callback(request):
 		except LineBotApiError:
 			return HttpResponseBadRequest()
 			
-
-line_bot_api.push_message(event.push_token, TextSendMessage(text='嗨嗨~歡迎使用可愛的我'))
 			
 		for event in events:
 			if isinstance(event, MessageEvent):
