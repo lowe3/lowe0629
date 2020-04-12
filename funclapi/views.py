@@ -50,7 +50,10 @@ def callback(request):
 					elif mtext == '勞力密集的工作或每天訓練甚至一天訓練兩次':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.9。'))	
 					elif mtext == '飲食小知識':
-						func.sendText(event1)	
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(
+							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
+							'每天早晨醒後，可以先喝一杯白開水，這樣可以預防膽結石。',
+							'睡前三小時不要吃東西。會胖。'])))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
