@@ -17,8 +17,7 @@ def sendText(event):
 def sendImage(event):
 	try:
 		message = ImageSendMessage(
-			original_content_url = "https://imgur.com/eIejLVQ.jpg",
-			preview_image_url = "https://imgur.com/eIejLVQ.jpg"
+			original_content_url = "https://imgur.com/eIejLVQ.jpg",preview_image_url = "https://imgur.com/eIejLVQ.jpg"
 		)
 		line_bot_api.reply_message(event.reply_token,message)
 	except:
