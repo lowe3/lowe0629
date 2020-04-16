@@ -13,3 +13,5 @@ requests==2.23.0
 sqlparse==0.3.1
 static3==0.7.0
 urllib3==1.25.8
+psycopg2-binary
+dj-database-url
