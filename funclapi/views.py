@@ -31,6 +31,7 @@ def callback(request):
 			
 			
 		for event in events:
+		line_id = event.source.user_id
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					#line_bot_api.reply_message(event.reply_token, TextSendMessage(text=event.message.text))
