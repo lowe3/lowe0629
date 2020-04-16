@@ -17,15 +17,6 @@ parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
 
 @csrf_exempt
-@handler.add(MessageEvent,message=TextMessage)
-def handle_message(event):
-    # get user id when reply
-    user_id = event.source.user_id
-    print("user_id =", user_id)
-	
-	line_bot_api.reply_message(
-	event.reply_token,
-	TextSendMessage(text=event.message.text))
 def callback(request):
 	if request.method == 'POST':
 		signature = request.META['HTTP_X_LINE_SIGNATURE']
