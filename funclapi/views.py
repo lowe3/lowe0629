@@ -37,9 +37,17 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '142公分':
 						num = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+num+'公分，請輸入您的體重'))
-					elif mtext == '男/180/70/18':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的基礎代謝率為1740，請回傳好。'))						
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+num+'公分，請輸入您的體重，EX:50公斤'))
+					elif mtext == '40公斤':
+						num = ''.join([x for x in mtext if x.isdigit()])
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+num+'公斤，請輸入您的性別，EX：男性'))
+					elif mtext == '男性':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請輸入您的年齡，EX：18歲'))
+					elif mtext == '女性':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的年齡，EX：18歲'))
+					elif mtext == '18歲':
+						num = ''.join([x for x in mtext if x.isdigit()])
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+num+'歲，感謝您的告知，接下來讓我們來選擇您的運動頻率好嗎?'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext == '久坐':
