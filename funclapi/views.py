@@ -47,7 +47,7 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的年齡，EX：18歲'))
 					elif mtext == '18歲':
 						num = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+num+'歲，感謝您的告知，接下來讓我們來選擇您的運動頻率好嗎?'))						
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+num+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext == '久坐':
