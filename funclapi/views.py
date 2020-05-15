@@ -36,18 +36,18 @@ def callback(request):
 					line_id = event.source.user_id
 					mtext = event.message.text
 					if mtext.find('公分'):
-						num = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+num+'公分，請輸入您的體重，EX:50公斤'))
-					elif mtext == '40公斤':
-						num = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+num+'公斤，請輸入您的性別，EX：男性'))
+						height = ''.join([x for x in mtext if x.isdigit()])
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+height+'公分，請輸入您的體重，EX:50公斤'))
+					elif mtext.find('公斤'):
+						weight = ''.join([x for x in mtext if x.isdigit()])
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+weight+'公斤，請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請輸入您的年齡，EX：18歲'))
 					elif mtext == '女性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的年齡，EX：18歲'))
-					elif mtext == '18歲':
-						num = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+num+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))						
+					elif mtext.find('歲'):
+						years = ''.join([x for x in mtext if x.isdigit()])
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+years+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))						
 					elif mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext == '久坐':
