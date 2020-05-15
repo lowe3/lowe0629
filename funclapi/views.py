@@ -49,27 +49,7 @@ def callback(request):
 						years = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+years+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))
 					elif mtext == '好':
-						message = TextSendMessage(
-						text='請選擇您的運動頻率',
-						quick_reply=QuickReply(
-							items=[
-								QuickReplyButton(
-								action=MessageAction(label="久坐",text="久坐")
-							),  
-								QuickReplyButton(
-								action=MessageAction(label="每周有輕鬆的運動3-5天",text="每周有輕鬆的運動3-5天")
-							), 
-								QuickReplyButton(
-								action=MessageAction(label="每周有中等強度的運動3-5天",text="每周有中等強度的運動3-5天")
-							), 
-								QuickReplyButton(
-								action=MessageAction(label="每周有高強度的運動6-7天",text="每周有高強度的運動6-7天")
-							), 
-								QuickReplyButton(
-								action=MessageAction(label="勞力密集的工作或每天訓練",text="勞力密集的工作或每天訓練甚至一天訓練兩次")
-								),
-							]))
-		line_bot_api.reply_message(event.reply_token,message)	
+						func.sendQuickreply(event)	
 					elif mtext == '久坐':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
 					elif mtext == '每周有輕鬆的運動3-5天':
