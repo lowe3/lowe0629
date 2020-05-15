@@ -22,7 +22,7 @@ def sendImage(event):
 		line_bot_api.reply_message(event.reply_token,message)
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
-def sendQuickreply(event):
+def sendQuickreply(event1):
 	try:
 		message = TextSendMessage(
 		text='請選擇您的運動頻率',
