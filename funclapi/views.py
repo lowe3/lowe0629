@@ -38,7 +38,7 @@ def callback(request):
 					if mtext[3:] == 'cm':
 						height = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+height+'公分，請輸入您的體重，EX:50kg'))
-					elif mtext[3:] == 'kg':
+					elif mtext[-2:] == 'kg':
 						weight = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+weight+'公斤，請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
