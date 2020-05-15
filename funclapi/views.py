@@ -35,7 +35,7 @@ def callback(request):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
-					if mtext[3:4] == '公分':
+					if mtext[3:4] == 'cm':
 						num = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+num+'公分，請輸入您的體重，EX:50公斤'))
 					elif mtext == '40公斤':
