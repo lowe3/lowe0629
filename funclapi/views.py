@@ -35,32 +35,32 @@ def callback(request):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
-					if mtext == '165公分':
+					if mtext[-2:] == '公分':
 						he = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+he+'公分，請輸入您的體重，EX:50公斤'))
-					elif mtext == '55公斤':
+					elif mtext[-2:] == '公斤':
 						we = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+we+'公斤，請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請輸入您的年齡，EX：18歲'))
 					elif mtext == '女性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的年齡，EX：18歲'))
-					elif mtext == '18歲':
+					elif mtext[2] == '歲':
 						ye = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))
 					elif mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
-					elif mtext == '久坐':
+					elif mtext == '@久坐':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
-					elif mtext == '每周有輕鬆的運動3-5天':
+					elif mtext == '@輕鬆運動3-5天':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.375。'))
-					elif mtext == '每周有中等強度的運動3-5天':
+					elif mtext == '@中等運動3-5天':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.55。'))
-					elif mtext == '每周有高強度的運動6-7天':
+					elif mtext == '@高度運動6-7天':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.725。'))
-					elif mtext == '勞力密集的工作或每天訓練甚至一天訓練兩次':
+					elif mtext == '@一天訓練兩次':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.9。'))	
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
