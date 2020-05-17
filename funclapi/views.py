@@ -48,8 +48,8 @@ def callback(request):
 					elif mtext[2] == '歲':
 						years = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+years+'歲，感謝您的告知，接下請選擇您的運動頻率好嗎?'))
-					elif mtext == '行':
-						func.sendQuickreply(event)
+					elif mtext == '好':
+						func.sendQuickreply(MF)
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
 					elif mtext == '久坐':
