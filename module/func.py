@@ -29,19 +29,19 @@ def sendQuickreply(event):
 		quick_reply=QuickReply(
 			items=[
 				QuickReplyButton(
-				action=MessageAction(label="久坐",text="久坐")
+				action=MessageAction(label="久坐",text="@久坐")
 			),  
 				QuickReplyButton(
-				action=MessageAction(label="每周有輕鬆的運動3-5天",text="每周有輕鬆的運動3-5天")
+				action=MessageAction(label="每周有輕鬆的運動3-5天",text="@輕鬆運動3-5天")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label="每周有中等強度的運動3-5天",text="每周有中等強度的運動3-5天")
+				action=MessageAction(label="每周有中等強度的運動3-5天",text="@中等運動3-5天")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label="每周有高強度的運動6-7天",text="每周有高強度的運動6-7天")
+				action=MessageAction(label="每周有高強度的運動6-7天",text="@高度運動6-7天")
 			), 
 				QuickReplyButton(
-				action=MessageAction(label="勞力密集的工作或每天訓練",text="勞力密集的工作或每天訓練甚至一天訓練兩次")
+				action=MessageAction(label="勞力密集的工作或每天訓練",text="@一天訓練兩次")
 				),
 			]))
 		line_bot_api.reply_message(event.reply_token,message)
