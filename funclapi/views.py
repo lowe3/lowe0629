@@ -46,9 +46,9 @@ def callback(request):
 					elif mtext[2] == '歲':
 						ye = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，請輸入您的性別，EX：男'))
-					elif mtext == '男':
+					elif mtext == '男性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請選擇您的運動頻率，好嗎?'))
-					elif mtext == '女':
+					elif mtext == '女性':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請選擇您的運動頻率，好嗎?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
