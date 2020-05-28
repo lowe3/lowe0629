@@ -48,9 +48,9 @@ def callback(request):
 					elif mtext[-2:] == '公斤':
 						we = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+we+'公斤，請輸入您的年齡，EX：18歲'))
-					elif mtext[2] == '歲':
-						ye = ''.join([x for x in mtext if x.isdigit()])
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，請輸入您的性別，EX：男性'))
+					# elif mtext[2] == '歲':
+						# ye = ''.join([x for x in mtext if x.isdigit()])
+						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，請輸入您的性別，EX：男性'))
 					# elif mtext == '男性':
 						# mb = 66+(13.7*we)+(5*he)-(6.8*ye)
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，您的基礎代謝率為'+he+'，接下來請輸入您的運動頻率好嗎?'))
