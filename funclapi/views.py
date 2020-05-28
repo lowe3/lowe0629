@@ -47,11 +47,9 @@ def callback(request):
 						ye = ''.join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，接下來請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
-						mb = 66+(13.7*we)+(5*he)-(6.8*ye)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，您的基礎代謝率為'+mb+'，接下請選擇您的運動頻率好嗎?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下請選擇您的運動頻率好嗎?'))
 					elif mtext == '女性':
-						wb = 665+(9.6*we)+(1.8*he)-(4.7*ye)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，您的基礎代謝率為'+wb+'，接下請選擇您的運動頻率好嗎?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下請選擇您的運動頻率好嗎?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
 					elif mtext == '@久坐':
