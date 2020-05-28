@@ -43,7 +43,7 @@ def callback(request):
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext[-2:] == '公分':
-						he = ''.join([x for x in mtext if x.isdigit()])
+						he = .join([x for x in mtext if x.isdigit()])
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+he+'公分，請輸入您的體重，EX:50公斤'))
 					elif mtext[-2:] == '公斤':
 						we = ''.join([x for x in mtext if x.isdigit()])
@@ -53,7 +53,7 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+ye+'歲，請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
 						# mb = 66+(13.7*we)+(5*he)-(6.8*ye)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，您的基礎代謝率為，接下來請輸入您的運動頻率好嗎?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生'+he+'，您的基礎代謝率為，接下來請輸入您的運動頻率好嗎?'))
 					elif mtext == '女性':
 						#wb = 655+(9.6*we)+(1.8*he)-(4.7*ye)
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的運動頻率好嗎?'))	
