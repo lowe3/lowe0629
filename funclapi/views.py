@@ -43,7 +43,7 @@ def callback(request):
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext[-2:] == '公分':
-						he = ''.join([x for x in mtext if x.isdigit()])
+						he = eval(''.join([x for x in mtext if x.isdigit()]))
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+he+'公分，請輸入您的體重，EX:50公斤'))
 					elif mtext[-2:] == '公斤':
 						we = ''.join([x for x in mtext if x.isdigit()])
