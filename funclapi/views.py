@@ -56,7 +56,7 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，您的基礎代謝率為'+he+'，接下來請輸入您的運動頻率好嗎?'))
 					elif mtext == '女性':
 						#wb = 655+(9.6*we)+(1.8*he)-(4.7*ye)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，您的基礎代謝率為，接下來請輸入您的運動頻率好嗎?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的運動頻率好嗎?'))	
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
 					elif mtext == '@久坐':
