@@ -38,6 +38,8 @@ def callback(request):
 					he = 0
 					we = 0
 					ye = 0
+					mb = 0
+					wb = 0
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext[-2:] == '公分':
