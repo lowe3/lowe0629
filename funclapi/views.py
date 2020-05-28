@@ -44,7 +44,8 @@ def callback(request):
 						func.sendQuickreply(event)
 					elif mtext[-2:] == '公分':
 						he = int(x for x in mtext if x.isdigit())
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+chr(he)+'公分，請輸入您的體重，EX:50公斤'))
+						hhe = '%d' %he
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+hhe+'公分，請輸入您的體重，EX:50公斤'))
 					elif mtext[-2:] == '公斤':
 						we = [x for x in mtext if x.isdigit()]
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+we+'公斤，請輸入您的年齡，EX：18歲'))
