@@ -8,6 +8,8 @@ from linebot.models import MessageEvent, TextMessage
 from module import func
 from linebot.models import *
 import random
+import os
+import psycopg2
 
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
@@ -35,11 +37,6 @@ def callback(request):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
-					he = 0
-					we = 0
-					ye = 0
-					mb = 0
-					wb = 0
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext[-2:] == '公分':
@@ -55,15 +52,15 @@ def callback(request):
 						yye = '%d'%ye
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+yye+'歲，請輸入您的性別，EX：男性'))
 					elif mtext == '男性':
-						mb = 66+(13.7*we)+(5*he)-(6.8*ye)
-						mmb = '%d'%mb
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，您的基礎代謝率為'+mmb+'，接下來請輸入您的運動頻率好嗎?'))
+						#mb = 66+(13.7*we)+(5*he)-(6.8*ye)
+						#mmb = '%d'%mb
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請輸入您的運動頻率好嗎?'))
 					elif mtext == '女性':
 						# wb = 655+(9.6*we)+(1.8*he)-(4.7*ye)
 						# wwb = '%d'%wb
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，您的基礎代謝率為'+hhe+'，接下來請輸入您的運動頻率好嗎?'))	
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請輸入您的運動頻率好嗎?'))	
 					elif mtext == '推薦菜單':
-						func.sendImage(event)						
+						func.sendImage(event)
 					elif mtext == '@久坐':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
 					elif mtext == '@輕鬆運動3-5天':
