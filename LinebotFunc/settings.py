@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import os
-import psycopg2
-import dj_database_url
+#import psycopg2
+#import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,7 +27,7 @@ LINE_CHANNEL_ACCESS_TOKEN = 'oYe2K3pCaFvBRfJXeh/gVeQntwTeHUkCz17OCjPL/3T54t9pzeq
 LINE_CHANNEL_SECERT = 'c764ddee54ead77137b855602e6257fb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,10 +82,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
+		'USER': 'mydatabaseuser',
+        'PASSWORD': '1042',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+	
+        
     }
 }
 
@@ -129,6 +131,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
       os.path.join(BASE_DIR,'static'),]
-	  
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600,ssl_require=True)
+	

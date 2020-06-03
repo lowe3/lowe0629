@@ -87,4 +87,4 @@ def callback(request):
 		return HttpResponseBadRequest()
 					
 # Create your views here.
-int(filter(str.isdigit, mtext))
+#int(filter(str.isdigit, mtext))
