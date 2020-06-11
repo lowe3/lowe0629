@@ -8,8 +8,7 @@ from linebot.models import MessageEvent, TextMessage
 from module import func
 from linebot.models import *
 import random
-import os
-import psycopg2
+
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
@@ -87,4 +86,3 @@ def callback(request):
 		return HttpResponseBadRequest()
 					
 # Create your views here.
-#int(filter(str.isdigit, mtext))
