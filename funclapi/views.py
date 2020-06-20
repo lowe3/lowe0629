@@ -13,12 +13,6 @@ import random
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
-try:
-    line_bot_api.push_message(to, TextSendMessage(text='歡迎使用健康的LINE BOT'))
-except LineBotApiError as e:
-    # error handle
-    raise e
-
 
 
 
