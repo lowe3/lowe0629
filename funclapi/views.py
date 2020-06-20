@@ -7,6 +7,8 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage
 from module import func
 from linebot.models import *
+from funclapi.models import users
+
 import random
 
 
@@ -37,6 +39,8 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
+					elif mtext[:6] == '1754' and len(mtext) > 6:
+						func.pushMessage(event, mtext)
 					elif mtext[-2:] == '公分':
 						he = int(''.join([x for x in mtext if x.isdigit()]))
 						hhe = '%d'%he
