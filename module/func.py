@@ -52,7 +52,7 @@ def sendQuickreply(event):
 	
 def pushMessage(event, mtext):  ##推播訊息給所有顧客
     try:
-        msg = mtext[6:]  #取得訊息
+        msg = mtext[4:]  #取得訊息
         userall = users.objects.all()
         for user in userall:  #逐一推播
             message = TextSendMessage(

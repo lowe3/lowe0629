@@ -39,7 +39,7 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
-					elif mtext[:6] == '1754' and len(mtext) > 6:
+					elif mtext[:4] == '1754' and len(mtext) > 4:
 						func.pushMessage(event, mtext)
 					elif mtext[-2:] == '公分':
 						he = int(''.join([x for x in mtext if x.isdigit()]))
