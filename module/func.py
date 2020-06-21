@@ -53,11 +53,10 @@ def sendQuickreply(event):
 def pushMessage(event, mtext):  ##推播訊息給所有顧客
     try:
         msg = mtext[4:]  #取得訊息
-        userall = users.objects.all()
-        for user in userall:  #逐一推播
+        for user :  #逐一推播
             message = TextSendMessage(
                 text = msg
             )
-            line_bot_api.push_message(to=user.uid, messages=[message])  #推播訊息
+            line_bot_api.push_message(to,messages=[message])  #推播訊息
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
