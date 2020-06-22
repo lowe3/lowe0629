@@ -36,7 +36,7 @@ def callback(request):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
-					line_bot_api.push_message(event.push_message, to=line_id, TextSendMessage(text='歡迎使用'))
+					line_bot_api.push_message(event.push_token, to=line_id, TextSendMessage(text='歡迎使用'))
 					if mtext == '好':
 						func.sendQuickreply(event)
 #					elif mtext == '請問我的user_id':
