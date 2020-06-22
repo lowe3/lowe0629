@@ -37,10 +37,11 @@ def callback(request):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
+					line_bot_api.push_message(to, TextSendMessage(text='歡迎使用'))
 					if mtext == '好':
 						func.sendQuickreply(event)
 #					elif mtext == '請問我的user_id':
-#						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=str(event.source.user_id))
+#						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=svent.source.user_id))
 					elif mtext[-2:] == '公分':
 						he = int(''.join([x for x in mtext if x.isdigit()]))
 						hhe = '%d'%he
