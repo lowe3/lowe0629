@@ -15,16 +15,6 @@ import random
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
-@csrf_exempt
-def handle_message(event):
-    # get user id when reply
-    user_id = event.source.user_id
-    print("user_id =", user_id)
-
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=user_id))
-
 
 
 @csrf_exempt
@@ -39,14 +29,14 @@ def callback(request):
 			return HttpResponseForbidden()
 		except LineBotApiError:
 			return HttpResponseBadRequest()
-			
+		
 			
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
-					#line_bot_api.push_message(to=line_id, TextSendMessage(text='歡迎使用'))
+					line_bot_api.push_message(event.push_message, to=line_id, TextSendMessage(text='歡迎使用'))
 					if mtext == '好':
 						func.sendQuickreply(event)
 #					elif mtext == '請問我的user_id':
