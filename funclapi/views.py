@@ -11,7 +11,18 @@ from funclapi.models import users
 
 import random
 
+CHANNEL_ACCESS_TOKEN = 'oYe2K3pCaFvBRfJXeh/gVeQntwTeHUkCz17OCjPL/3T54t9pzeqDaz0wpeZBQKNgxT4MZylIJZjLEroLFbCWHeCqdvDsLBUAFrpa6KDkLO1oSpHewvjZsTfCNilpTGiWCKOfk6ds72by1J0GRdpBIAdB04t89/1O/w1cDnyilFU='
+to = 'U8b9bc9dcfc31df64d62f4491129eaec9'
 
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+
+try:
+    line_bot_api.push_message(to, TextSendMessage(text='台科大電腦研習社'))
+except LineBotApiError as e:
+    # error handle
+    raise e
+	
+	
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
 
