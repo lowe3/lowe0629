@@ -11,24 +11,24 @@ from funclapi.models import users
 import random
 import psycopg2
 
-conn = psycopg2.connect(
-database = "d4jgiqvfjf2nde",
-user = "rdvsrzpesjtzad",
-password = "eddaf28d42616aba0fd4de92aeb8df4d1e33c6e1ae6a202da17fd1d6cd39fbaf",
-host = "ec2-34-200-101-236.compute-1.amazonaws.com",
-port = "5432")
+#conn = psycopg2.connect(
+#database = "d4jgiqvfjf2nde",
+#user = "rdvsrzpesjtzad",
+#password = "eddaf28d42616aba0fd4de92aeb8df4d1e33c6e1ae6a202da17fd1d6cd39fbaf",
+#host = "ec2-34-200-101-236.compute-1.amazonaws.com",
+#port = "5432")
 
-cur = conn.cursor()
-cur.execute("CREATE TABLE USER(
-ID          VARCHAR(50) PRIMARY KEY   NOT NULL,
-HEIGHT      INT                       NOT NULL,
-WEIGHT      INT                       NOT NULL,
-AGE         INT                       NOT NULL,
-GENDER      VARCHAR(10)               NOT NULL,
-BMR         INT                       NOT NULL);")
+#cur = conn.cursor()
+#cur.execute("CREATE TABLE USER(
+#ID          VARCHAR(50) PRIMARY KEY   NOT NULL,
+#HEIGHT      INT                       NOT NULL,
+#WEIGHT      INT                       NOT NULL,
+#AGE         INT                       NOT NULL,
+#GENDER      VARCHAR(10)               NOT NULL,
+#BMR         INT                       NOT NULL);")
 
-conn.commit()
-conn.close()
+#conn.commit()
+#conn.close()
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
