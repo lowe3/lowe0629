@@ -45,6 +45,7 @@ def callback(request):
 			return HttpResponseForbidden()
 		except LineBotApiError:
 			return HttpResponseBadRequest()
+			
 		
 			
 		for event in events:
