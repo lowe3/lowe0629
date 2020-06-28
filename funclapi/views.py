@@ -19,8 +19,7 @@ host = "ec2-34-200-101-236.compute-1.amazonaws.com",
 port = "5432")
 
 cur = conn.cursor()
-cur.execute("
-CREATE TABLE USER(
+cur.execute("CREATE TABLE USER(
 ID          VARCHAR(50) PRIMARY KEY   NOT NULL,
 HEIGHT      INT                       NOT NULL,
 WEIGHT      INT                       NOT NULL,
