@@ -7,7 +7,6 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import users
 import random
 import psycopg2
 
