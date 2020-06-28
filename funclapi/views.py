@@ -8,7 +8,6 @@ from linebot.models import MessageEvent, TextMessage
 from module import func
 from linebot.models import *
 import random
-import psycopg2
 
 #conn = psycopg2.connect(
 #database = "d4jgiqvfjf2nde",
