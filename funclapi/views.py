@@ -51,7 +51,7 @@ def callback(request):
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
-					#line_id = event.source.user_id
+					line_id = event.source.user_id
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
