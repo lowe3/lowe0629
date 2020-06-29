@@ -75,7 +75,7 @@ def callback(request):
 							'飲食多樣化，選擇當季在地食材。'])))
 
 					else :
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤'))						
         return HttpResponse()
 
     else:
