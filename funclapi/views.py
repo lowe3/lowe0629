@@ -9,7 +9,7 @@ from module import func
 import random
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
-parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
+parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 
 
 
