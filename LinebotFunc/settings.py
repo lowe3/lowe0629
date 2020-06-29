@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+import os
+import psycopg2
 
-import os  
-import dj_database_url
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600,ssl_require=True)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&l-5u1cp_63ks5@g$-^j&3^&czbaw9hb9ymz)1+^9j2)cbdp)8'
 LINE_CHANNEL_ACCESS_TOKEN = 'oYe2K3pCaFvBRfJXeh/gVeQntwTeHUkCz17OCjPL/3T54t9pzeqDaz0wpeZBQKNgxT4MZylIJZjLEroLFbCWHeCqdvDsLBUAFrpa6KDkLO1oSpHewvjZsTfCNilpTGiWCKOfk6ds72by1J0GRdpBIAdB04t89/1O/w1cDnyilFU='
-LINE_CHANNEL_SECRET = 'c764ddee54ead77137b855602e6257fb'
+LINE_CHANNEL_SECERT = 'c764ddee54ead77137b855602e6257fb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -129,3 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
       os.path.join(BASE_DIR,'static'),]
+	  
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600,ssl_require=True)

@@ -4,12 +4,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import *
+from linebot.models import MessageEvent, TextMessage
 from module import func
+from linebot.models import *
 import random
 
+
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
-parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
+parser = WebhookParser(settings.LINE_CHANNEL_SECERT)
+
+
 
 
 @csrf_exempt
@@ -17,6 +21,7 @@ def callback(request):
 	if request.method == 'POST':
 		signature = request.META['HTTP_X_LINE_SIGNATURE']
 		body = request.body.decode('utf-8')
+		
 		try:
 			events = parser.parse(body, signature)
 		except InvalidSignatureError:
@@ -75,12 +80,9 @@ def callback(request):
 							'飲食多樣化，選擇當季在地食材。'])))
 
 					else :
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='錯誤'))						
-        return HttpResponse()
-
-    else:
-        return HttpResponseBadRequest()
-					
-# Create your views here.
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
+		return HttpResponse()
+	else:
+		return HttpResponseBadRequest()
 					
 # Create your views here.
