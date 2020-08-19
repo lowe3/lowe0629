@@ -73,6 +73,8 @@ def callback(request):
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請選擇您的運動頻率，好嗎?'))
 					elif mtext == '女':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請選擇您的運動頻率，好嗎?'))
+					elif mtext == '餐點紀錄':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
 					elif mtext == '@久坐':
