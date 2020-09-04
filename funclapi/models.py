@@ -11,3 +11,19 @@ class user(models.Model):
 	
 	def _str_(self):
 		return self.uid
+
+class seven(models.Model):
+	items = models.CharField(max_length=50, null=False)
+	calories = models.CharField(max_length=50, null=False)
+
+class family(models.Model):
+	items = models.CharField(max_length=50, null=False)
+	perserving = models.CharField(max_length=50)
+	calories = models.CharField(max_length=50, null=False)
+	protein = models.CharField(max_length=50)
+	fat = models.CharField(max_length=50)
+	saturatedfat = models.CharField(max_length=50)
+	transfat = models.CharField(max_length=50)
+	carbohydrate = models.CharField(max_length=50)
+	sodium = models.CharField(max_length=50)
+	sugar = models.CharField(max_length=50)
