@@ -9,6 +9,9 @@ class user(models.Model):
 	gender = models.CharField(max_length=50, null=False)
 	bmr = models.CharField(max_length=50, null=False)
 
+	def _str_(self):
+		return self.uid
+
 class seven(models.Model):
 	items = models.CharField(max_length=50, null=False)
 	calories = models.CharField(max_length=50, null=False)
