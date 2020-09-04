@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'LinebotFunc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
-        'HOST': '127.0.0.1',
+        'NAME': 'd4jgiqvfjf2nde',
+        'USER': 'rdvsrzpesjtzad',
+        'PASSWORD': 'eddaf28d42616aba0fd4de92aeb8df4d1e33c6e1ae6a202da17fd1d6cd39fbaf',
+        'HOST': 'ec2-34-200-101-236.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
