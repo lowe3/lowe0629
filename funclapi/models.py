@@ -8,15 +8,12 @@ class user(models.Model):
 	age = models.CharField(max_length=50, null=False)
 	gender = models.CharField(max_length=50, null=False)
 	bmr = models.CharField(max_length=50, null=False)
-	
-	def _str_(self):
-		return self.uid
 
 class seven(models.Model):
 	items = models.CharField(max_length=50, null=False)
 	calories = models.CharField(max_length=50, null=False)
 
-class family(models.Model):
+class wefamily(models.Model):
 	items = models.CharField(max_length=50, null=False)
 	perserving = models.CharField(max_length=50)
 	calories = models.CharField(max_length=50, null=False)
