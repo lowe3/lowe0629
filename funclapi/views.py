@@ -39,7 +39,7 @@ def callback(request):
 				item = wefamily.object.filter(items='event.message.text)
 				
 				content = ''
-				for wefamily in items1:
+				for wefamily in item:
 					content += wefamily.items + '\n' + wefamily.calories + '\n\n'
 					
 				line_bot_api.reply_message(
