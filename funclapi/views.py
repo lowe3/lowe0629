@@ -35,6 +35,16 @@ def callback(request):
 			
 		for event in events:
 			if isinstance(event, MessageEvent):
+				items1 = wefamily.object.filter(items='event.message.text)
+				
+				content = ''
+				for items in items1
+					content += wefamily.items + '\n' + wefamily.calories + '\n\n'
+					
+				line_bot_api.reply_message(
+					event.reply_token,
+					TextSendMessage(text=content)
+					)
 				if isinstance(event.message, TextMessage):
 					line_id = event.source.user_id
 					mtext = event.message.text
