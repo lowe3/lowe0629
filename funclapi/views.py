@@ -31,10 +31,24 @@ def callback(request):
 			return HttpResponseForbidden()
 		except LineBotApiError:
 			return HttpResponseBadRequest()
-        for event in events:
-            if isinstance(event, MessageEvent):
-                user_id = event.source.user_id
-                if not (users.objects.filter(uid=user_id).exists()):
+			
+			
+		for event in events:
+			if isinstance(event, MessageEvent):
+			
+				# item = wefamily.object.filter(items='event.message.text)
+				
+				# content = ''
+				# for wefamily in item:
+					# content += wefamily.items + '\n' + wefamily.calories + '\n\n'
+					
+				# line_bot_api.reply_message(
+					# event.reply_token,
+					# TextSendMessage(text=content)
+					# )
+				if isinstance(event.message, TextMessage):
+					user_id = event.source.user_id
+					if not (users.objects.filter(uid=user_id).exists()):
                     unit = users.objects.create(uid=user_id)
                     unit.save()
 					mtext = event.message.text
