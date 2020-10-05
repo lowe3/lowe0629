@@ -10,4 +10,4 @@ admin.site.register(seven, sevenAdmin)
 
 class wefamilyAdmin (admin.ModelAdmin):
 	list_display=('items','perserving','calories','protein','fat','saturatedfat','transfat','carbohydrate','sodium','sugar','picture')
-admin.site.register(seven, sevenAdmin)
+admin.site.register(wefamily, wefamilyAdmin)
