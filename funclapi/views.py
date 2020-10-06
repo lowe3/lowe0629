@@ -35,7 +35,7 @@ def callback(request):
 			
 		for event in events:
 			if isinstance(event, MessageEvent):
-				if isinstance(event.message, TextMessage):
+				# if isinstance(event.message, TextMessage):
 					user_id = event.source.user_id
 					if not (users.objects.filter(uid=user_id).exists()):
                     unit = users.objects.create(uid=user_id)
