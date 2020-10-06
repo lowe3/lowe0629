@@ -36,10 +36,10 @@ def callback(request):
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
-					line_id = event.source.user_id
-					# if not (users.objects.filter(uid=user_id).exists()):
-                    # unit = users.objects.create(uid=user_id)
-                    # unit.save()
+					user_id = event.source.user_id
+					if not (users.objects.filter(uid=user_id).exists()):
+                    unit = users.objects.create(uid=user_id)
+                    unit.save()
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
