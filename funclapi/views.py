@@ -9,6 +9,7 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
+from funclapi.models import user, seven, wefamily
 import random
 
 
@@ -31,15 +32,14 @@ def callback(request):
 			return HttpResponseForbidden()
 		except LineBotApiError:
 			return HttpResponseBadRequest()
-			
-			
+				
 		for event in events:
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					user_id = event.source.user_id
-					# if not (users.objects.filter(uid=user_id).exists()):
-                    # unit = users.objects.create(uid=user_id)
-                    # unit.save()
+					if not (users.objects.filter(uid=user_id).exists()):
+						unit = users.objects.create(uid=user_id)
+						unit.save()
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
