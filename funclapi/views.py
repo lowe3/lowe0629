@@ -43,8 +43,28 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
-					# elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
+					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
 						# func.manageForm(event, mtext, user_id)
+						flist = mtext[3:].split('\r')  #去除前三個「#」字元再分解字串
+						pheight = flist[0]  #取得輸入資料
+						pweight = flist[1]
+						page = flist[2]
+						pgender = flist[3]
+						pbmr = flist[5]
+						ptdee = flist[6]
+						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit.save()
+						text1 = "您的個人資料如下："
+						text1 += "\n身高：" + pheight
+						text1 += "\n體重：" + pweight
+						text1 += "\n年齡：" + page
+						text1 += "\n性別：" + pgender
+						text1 += "\n基礎代謝率：" + pbmr
+						text1 += "\n每日總消耗熱量：" + ptdee
+						message = TextSendMessage(  #顯示個人資料
+							text = text1
+						)
+						line_bot_api.reply_message(event.reply_token,message)
 					elif mtext[-2:] == '公分':
 						he = int(''.join([x for x in mtext if x.isdigit()]))
 						hhe = '%d'%he
