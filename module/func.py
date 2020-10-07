@@ -51,7 +51,7 @@ def sendQuickreply(event):
 		
 def manageForm(event, mtext, user_id):  #處理LIFF傳回的FORM資料
     try:
-        flist = mtext[3:].split("\r")  #去除前三個「#」字元再分解字串
+        flist = mtext[3:].split('\r')  #去除前三個「#」字元再分解字串
         pheight = flist[0]  #取得輸入資料
         pweight = flist[1]
         page	= flist[2]
