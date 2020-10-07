@@ -108,7 +108,7 @@ def callback(request):
 						# message = TextSendMessage(  #顯示個人資料
 							# text = text1
 						# )
-						line_bot_api.reply_message(event.reply_token,TextSendMessage(text = text1))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text = text1))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
