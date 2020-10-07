@@ -96,7 +96,7 @@ def callback(request):
 						pgender = flist[3]
 						pbmr = flist[5]
 						ptdee = flist[6]
-						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
 						text1 = "您的個人資料已輸入成功，資料如下："
 						text1 += "\n身高：" + pheight
