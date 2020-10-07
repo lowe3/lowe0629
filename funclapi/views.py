@@ -99,8 +99,8 @@ def callback(request):
 						pbmr = flist[5]
 						ptdee = flist[6]
 							# user.objects.filter(uid=user_id)
-								unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-								unit.save()
+						unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit.save()
 						text1 = "您的個人資料已輸入成功，資料如下："
 						text1 += "\n身高：" + pheight
 						text1 += "\n體重：" + pweight
@@ -111,7 +111,7 @@ def callback(request):
 						# message = TextSendMessage(  #顯示個人資料
 							# text = text1
 						# )
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text = text1))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text1))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
