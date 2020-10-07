@@ -44,8 +44,7 @@ def callback(request):
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
-						# func.manageForm(event, mtext, user_id)
-						flist = mtext[3:].split('\r')  #去除前三個「#」字元再分解字串
+						flist = mtext[3:].split("/n")  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
 						pweight = flist[1]
 						page = flist[2]
