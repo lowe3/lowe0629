@@ -43,6 +43,8 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
+					# elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
+						# func.manageForm(event, mtext, user_id)
 					elif mtext[-2:] == '公分':
 						he = int(''.join([x for x in mtext if x.isdigit()]))
 						hhe = '%d'%he

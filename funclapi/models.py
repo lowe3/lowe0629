@@ -15,6 +15,9 @@ class seven(models.Model):
 	items = models.CharField(max_length=100, null=False)
 	calories = models.CharField(max_length=100, null=False)
 	picture = models.CharField(max_length=250, null=True)
+	
+	def _str_(self):
+		return self.items
 
 class wefamily(models.Model):
 	items = models.CharField(max_length=100, null=False)
@@ -28,4 +31,7 @@ class wefamily(models.Model):
 	sodium = models.CharField(max_length=100)
 	sugar = models.CharField(max_length=100)
 	picture = models.CharField(max_length=250, null=True)
+	
+	def _str_(self):
+		return self.items
 
