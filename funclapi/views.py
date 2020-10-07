@@ -89,7 +89,7 @@ def callback(request):
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
 					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split("/n")  #去除前三個「#」字元再分解字串
+						flist = mtext[3:].split('/n')  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
 						pweight = flist[1]
 						page = flist[2]
@@ -98,7 +98,7 @@ def callback(request):
 						ptdee = flist[6]
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
-						text1 = "您的個人資料如下："
+						text1 = "您的個人資料已輸入成功，資料如下："
 						text1 += "\n身高：" + pheight
 						text1 += "\n體重：" + pweight
 						text1 += "\n年齡：" + page
