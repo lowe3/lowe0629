@@ -89,7 +89,7 @@ def callback(request):
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
 					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split('/n')
+						flist = mtext[3:].split("/n")
 						# new_mtext = mtext[3:]
 						# flist = new_mtext.split('/n')  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
