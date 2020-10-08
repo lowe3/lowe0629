@@ -41,40 +41,12 @@ def callback(request):
 						# unit = user.objects.create(uid=user_id)
 						# unit.save()
 					mtext = event.message.text
-					if mtext == '好':
-						func.sendQuickreply(event)
-					elif mtext[-2:] == '公分':
-						he = int(''.join([x for x in mtext if x.isdigit()]))
-						hhe = '%d'%he
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+hhe+'公分，請輸入您的體重，EX:50公斤'))
-					elif mtext[-2:] == '公斤':
-						we = int(''.join([x for x in mtext if x.isdigit()]))
-						wwe = '%d'%we
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+wwe+'公斤，請輸入您的年齡，EX：18歲'))
-					elif mtext[-1] == '歲':
-						ye = int(''.join([x for x in mtext if x.isdigit()]))
-						yye = '%d'%ye
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+yye+'歲，請輸入您的性別，EX：男性'))
-					elif mtext == '男':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請選擇您的運動頻率，好嗎?'))
-					elif mtext == '女':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請選擇您的運動頻率，好嗎?'))
-					elif mtext == '基本資料':
+					if mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)						
-					elif mtext == '@久坐':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
-					elif mtext == '@輕鬆運動3-5天':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.375。'))
-					elif mtext == '@中等運動3-5天':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.55。'))
-					elif mtext == '@高度運動6-7天':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.725。'))
-					elif mtext == '@一天訓練兩次':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.9。'))	
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
@@ -89,16 +61,13 @@ def callback(request):
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
 					elif mtext[:3] == '###':  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split()
-						# new_mtext = mtext[3:]
-						# flist = new_mtext.split('/n')  #去除前三個「#」字元再分解字串
+						flist = mtext[3:].split()  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
 						pweight = flist[1]
 						page = flist[2]
 						pgender = flist[3]
 						pbmr = flist[5]
 						ptdee = flist[6]
-							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id,height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
 						# text1 = "您的個人資料已輸入成功，資料如下："
