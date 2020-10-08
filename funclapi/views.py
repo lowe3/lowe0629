@@ -88,7 +88,7 @@ def callback(request):
 							'三餐應以全穀雜糧為主食。',
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
-					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
+					elif mtext[:3] == '###':  #處理LIFF傳回的FORM資料
 						# flist = mtext[3:].split("/n")
 						# new_mtext = mtext[3:]
 						# flist = new_mtext.split('/n')  #去除前三個「#」字元再分解字串
@@ -99,8 +99,8 @@ def callback(request):
 						# pbmr = flist[5]
 						# ptdee = flist[6]
 							# user.objects.filter(uid=user_id)
-						unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-						unit.save()
+						# unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						# unit.save()
 						text1 = "您的個人資料已輸入成功，資料如下："
 						# text1 += "\n身高：" + pheight
 						# text1 += "\n體重：" + pweight
