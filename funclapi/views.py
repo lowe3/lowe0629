@@ -89,25 +89,25 @@ def callback(request):
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
 					elif mtext[:3] == '###' and len(mtext) > 3:  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split("/n")
+						# flist = mtext[3:].split("/n")
 						# new_mtext = mtext[3:]
 						# flist = new_mtext.split('/n')  #去除前三個「#」字元再分解字串
-						pheight = flist[0]  #取得輸入資料
-						pweight = flist[1]
-						page = flist[2]
-						pgender = flist[3]
-						pbmr = flist[5]
-						ptdee = flist[6]
+						# pheight = flist[0]  #取得輸入資料
+						# pweight = flist[1]
+						# page = flist[2]
+						# pgender = flist[3]
+						# pbmr = flist[5]
+						# ptdee = flist[6]
 							# user.objects.filter(uid=user_id)
-						# unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-						# unit.save()
+						unit = user.objects.create(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit.save()
 						text1 = "您的個人資料已輸入成功，資料如下："
-						text1 += "\n身高：" + pheight
-						text1 += "\n體重：" + pweight
-						text1 += "\n年齡：" + page
-						text1 += "\n性別：" + pgender
-						text1 += "\n基礎代謝率：" + pbmr
-						text1 += "\n每日總消耗熱量：" + ptdee
+						# text1 += "\n身高：" + pheight
+						# text1 += "\n體重：" + pweight
+						# text1 += "\n年齡：" + page
+						# text1 += "\n性別：" + pgender
+						# text1 += "\n基礎代謝率：" + pbmr
+						# text1 += "\n每日總消耗熱量：" + ptdee
 						# message = TextSendMessage(  #顯示個人資料
 							# text = text1
 						# )
