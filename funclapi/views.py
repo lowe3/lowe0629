@@ -41,26 +41,7 @@ def callback(request):
 						# unit = user.objects.create(uid=user_id)
 						# unit.save()
 					mtext = event.message.text
-					if mtext == '基本資料':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
-					elif mtext == '餐點紀錄':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
-					elif mtext == '推薦菜單':
-						func.sendImage(event)						
-					elif mtext == '飲食小知識':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(
-							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
-							'每天早晨醒後，可以先喝一杯白開水，這樣可以預防膽結石。',
-							'睡前三小時不要吃東西。會胖。',
-							'中國的古人認為，味覺有五種：酸甜苦辣鹹！事實上卻是，辣並非味覺而是痛覺，味覺有四種：苦酸甜鹹。',
-							'蘋果中所具的有天然的香氣，對於人體來說，有舒緩壓力、提神醒腦的功效，而蘋果中充足的礦物質硼，也同樣可以使睏倦的大腦快速恢復到清醒狀態。喝杯咖啡不如吃個蘋果的道理就在於此。',
-							'番茄醬是現代人的常見食品之一，但在19世紀，番茄醬並不是食品而是藥品。現代醫學研究表明，番茄醬可以有效降低人體低密度脂蛋白膽固醇的含量，從而減少心臟病和中風的危險。',
-							'飲食應依『每日飲食指南』的食物分類與建議份量，適當選擇搭配。特別注意應吃到足夠量的蔬菜、水果、全穀、豆類、堅果種子及乳製品。',
-							'了解自己的健康體重和熱量需求，適量飲食，以維持體重在正常範圍內。',
-							'三餐應以全穀雜糧為主食。',
-							'多蔬食少紅肉，多粗食少精製。',
-							'飲食多樣化，選擇當季在地食材。'])))
-					elif mtext[:3] == '###':  #處理LIFF傳回的FORM資料
+					if mtext[:3] == '###':  #處理LIFF傳回的FORM資料
 						flist = mtext[3:].split()  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
 						pweight = flist[1]
@@ -79,6 +60,26 @@ def callback(request):
 						# text1 += "\n每日總消耗熱量：" + ptdee
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text1))
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
+					elif mtext == '基本資料':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
+					elif mtext == '餐點紀錄':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
+					elif mtext == '推薦菜單':
+						func.sendImage(event)						
+					elif mtext == '飲食小知識':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(
+							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
+							'每天早晨醒後，可以先喝一杯白開水，這樣可以預防膽結石。',
+							'睡前三小時不要吃東西。會胖。',
+							'中國的古人認為，味覺有五種：酸甜苦辣鹹！事實上卻是，辣並非味覺而是痛覺，味覺有四種：苦酸甜鹹。',
+							'蘋果中所具的有天然的香氣，對於人體來說，有舒緩壓力、提神醒腦的功效，而蘋果中充足的礦物質硼，也同樣可以使睏倦的大腦快速恢復到清醒狀態。喝杯咖啡不如吃個蘋果的道理就在於此。',
+							'番茄醬是現代人的常見食品之一，但在19世紀，番茄醬並不是食品而是藥品。現代醫學研究表明，番茄醬可以有效降低人體低密度脂蛋白膽固醇的含量，從而減少心臟病和中風的危險。',
+							'飲食應依『每日飲食指南』的食物分類與建議份量，適當選擇搭配。特別注意應吃到足夠量的蔬菜、水果、全穀、豆類、堅果種子及乳製品。',
+							'了解自己的健康體重和熱量需求，適量飲食，以維持體重在正常範圍內。',
+							'三餐應以全穀雜糧為主食。',
+							'多蔬食少紅肉，多粗食少精製。',
+							'飲食多樣化，選擇當季在地食材。'])))
+
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
