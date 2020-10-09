@@ -82,8 +82,8 @@ def callback(request):
 						pweight = flist[1]
 						page = flist[2]
 						pgender = flist[3]
-						pbmr = round(int(''.join([x for x in flist[5] if x.isdigit()])),2)
-						ptdee = round(int(''.join([x for x in flist[6] if x.isdigit()])),2)
+						pbmr = flist[5]
+						ptdee = flist[6]
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
