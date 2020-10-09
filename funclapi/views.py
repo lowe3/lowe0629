@@ -55,26 +55,12 @@ def callback(request):
 						# ye = int(''.join([x for x in mtext if x.isdigit()]))
 						# yye = '%d'%ye
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+yye+'歲，請輸入您的性別，EX：男性'))
-					# elif mtext == '男':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的先生，接下來請選擇您的運動頻率，好嗎?'))
-					# elif mtext == '女':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='好的小姐，接下來請選擇您的運動頻率，好嗎?'))
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
 					elif mtext == '推薦菜單':
-						func.sendImage(event)						
-					# elif mtext == '@久坐':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.2。'))
-					# elif mtext == '@輕鬆運動3-5天':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.375。'))
-					# elif mtext == '@中等運動3-5天':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.55。'))
-					# elif mtext == '@高度運動6-7天':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.725。'))
-					# elif mtext == '@一天訓練兩次':
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='你的每日總消耗熱量為基礎代謝率*1.9。'))	
+						func.sendImage(event)							
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
@@ -96,8 +82,8 @@ def callback(request):
 						pweight = flist[1]
 						page = flist[2]
 						pgender = flist[3]
-						pbmr = flist[5]
-						ptdee = flist[6]
+						pbmr = round(int(''.join([x for x in flist[5] if x.isdigit()])),2)
+						ptdee = round(int(''.join([x for x in flist[6] if x.isdigit()])),2)
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
