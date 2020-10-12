@@ -80,10 +80,12 @@ def callback(request):
 						page = flist[2]
 						pgender = flist[3]
 						pbmr = flist[5]
+						ppbmr = int(pbmr)
 						# ppbmr = int(''.join([x for x in pbmr if x.isdigit()]))
 						# pbmrr = format(pbmr, '0.2f')
 						pbmrr = '%.2f' % pbmr
 						ptdee = flist[6]
+						pptdee = int(ptdee)
 						# pptdee = int(''.join([x for x in ptdee if x.isdigit()]))
 						# ptdeee = format(ptdee, '0.2f')
 						ptdeee = '%.2f' % ptdee
