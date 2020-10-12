@@ -80,11 +80,11 @@ def callback(request):
 						page = flist[2]
 						pgender = flist[3]
 						pbmr = flist[5]
-						ppbmr = int(''.join([x for x in pbmr if x.isdigit()]))
-						pbmrr = format(ppbmr, '0.2f')
+						# ppbmr = int(''.join([x for x in pbmr if x.isdigit()]))
+						pbmrr = format(pbmr, '0.2f')
 						ptdee = flist[6]
-						pptdee = int(''.join([x for x in ptdee if x.isdigit()]))
-						ptdeee = format(pptdee, '0.2f')
+						# pptdee = int(''.join([x for x in ptdee if x.isdigit()]))
+						ptdeee = format(ptdee, '0.2f')
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
