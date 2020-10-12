@@ -82,13 +82,13 @@ def callback(request):
 						pbmr = flist[5]
 						ppbmr = float(pbmr)
 						# ppbmr = int(''.join([x for x in pbmr if x.isdigit()]))
-						# pbmrr = format(pbmr, '0.2f')
-						pbmrr = '%.2f' % pbmr
+						pbmrr = format(pbmr, '0.2f')
+						# pbmrr = '%.2f' % pbmr
 						ptdee = flist[6]
 						pptdee = float(ptdee)
 						# pptdee = int(''.join([x for x in ptdee if x.isdigit()]))
-						# ptdeee = format(ptdee, '0.2f')
-						ptdeee = '%.2f' % ptdee
+						ptdeee = format(ptdee, '0.2f')
+						# ptdeee = '%.2f' % ptdee
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
