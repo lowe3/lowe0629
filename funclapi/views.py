@@ -37,9 +37,6 @@ def callback(request):
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					user_id = event.source.user_id
-					# if not (user.objects.filter(uid=user_id).exists()):
-						# unit = user.objects.create(uid=user_id)
-						# unit.save()
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
@@ -82,19 +79,13 @@ def callback(request):
 						pweight = flist[1]
 						page = flist[2]
 						pgender = flist[3]
-						pbmr = flist[5]
-						ptdee = flist[6]
+						pbmr = int(''.join([x for x in flist[5] if x.isdigit()]))
+						ppbmr = round(pbmr, 2)
+						ptdee = int(''.join([x for x in flist[6] if x.isdigit()]))
+						pptdee = round(ptdee, 2)
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
-						# text1 = "您的個人資料已輸入成功，資料如下："
-						# text1 += "\n身高：" + pheight
-						# text1 += "\n體重：" + pweight
-						# text1 += "\n年齡：" + page
-						# text1 += "\n性別：" + pgender
-						# text1 += "\n基礎代謝率：" + pbmr
-						# text1 += "\n每日總消耗熱量：" + ptdee
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=text1))
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
