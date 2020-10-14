@@ -1,6 +1,6 @@
 from django.db import models
-class users(models.Model):
-	uid = models.CharField(max_length=100, null=False, primary_key=True)
+class user(models.Model):
+	uid = models.CharField(max_length=100, null=False)
 	height = models.CharField(max_length=100, null=False)
 	weight = models.CharField(max_length=100, null=False)
 	age = models.CharField(max_length=100, null=False)
