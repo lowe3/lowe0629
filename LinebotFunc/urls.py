@@ -21,5 +21,5 @@ from funclapi import views
 urlpatterns = [
     url('^callback', views.callback),
     path('admin/', admin.site.urls),
-	path('funclapi/', include('funclapi.urls')),
+	# path('funclapi/', include('funclapi.urls')),
 ]
