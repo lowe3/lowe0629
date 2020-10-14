@@ -37,6 +37,8 @@ def callback(request):
 			if isinstance(event, MessageEvent):
 				if isinstance(event.message, TextMessage):
 					user_id = event.source.user_id
+					if (users.objects.filter(uid=user_id).exists()):
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已上傳您的ID資料了'))
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
