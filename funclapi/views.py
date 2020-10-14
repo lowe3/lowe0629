@@ -89,10 +89,10 @@ def callback(request):
 						# ptdeee = format(ptdee, '0.2f')
 						# ptdeee = '%.2f' % ptdee
 							# user.objects.filter(uid=user_id)
-							# if (users.objects.filter(uid=user_id).exists()):
-								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已上傳您的ID資料了'))
-						# else : 	
-						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+							if (users.objects.filter(uid=user_id).exists()):
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已上傳您的ID資料了'))
+						else : 	
+						unit = users.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
 					else :
