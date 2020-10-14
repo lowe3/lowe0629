@@ -55,11 +55,11 @@ def sendQuickreply(event):
 			# template=ConfirmTemplate(
 				# text="請選擇你購買食品的超商",
 				# actions=[
-					# PostbackTemplateAction(
+					# MessageTemplateAction(
 						# label="7-11",
 						# data="7-11"
 					# ),
-					# PostbackTemplateAction(
+					# MessageTemplateAction(
 						# label="全家"
 						# data="全家"
 					# )
