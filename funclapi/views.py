@@ -55,8 +55,8 @@ def callback(request):
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '餐點紀錄':
-						func.sendchoise(event)
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
+						# func.sendchoise(event)
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)							
 					elif mtext == '飲食小知識':
@@ -92,7 +92,7 @@ def callback(request):
 							# if (users.objects.filter(uid=user_id).exists()):
 								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已上傳您的ID資料了'))
 						# else : 	
-						unit = users.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
 					else :
