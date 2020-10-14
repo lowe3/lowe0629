@@ -1,15 +1,5 @@
 from django.db import models
-class user(models.Model):
-	uid = models.CharField(max_length=100, null=False)
-	height = models.CharField(max_length=100, null=False)
-	weight = models.CharField(max_length=100, null=False)
-	age = models.CharField(max_length=100, null=False)
-	gender = models.CharField(max_length=100, null=False)
-	bmr = models.CharField(max_length=100, null=False)
-	tdee = models.CharField(max_length=100, null=True)
 
-	def _str_(self):
-		return self.uid
 
 class seven(models.Model):
 	items = models.CharField(max_length=100, null=False)
