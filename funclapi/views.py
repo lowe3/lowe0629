@@ -80,19 +80,17 @@ def callback(request):
 						page = flist[2]
 						pgender = flist[3]
 						pbmr = flist[5]
-						# ppbmr = float(pbmr)
-						# ppbmr = int(''.join([x for x in pbmr if x.isdigit()]))
+						ppbmr = float(pbmr)
 						# pbmrr = format(pbmr, '0.2f')
 						# pbmrr = '%.2f' % pbmr
 						ptdee = flist[6]
-						# pptdee = float(ptdee)
-						# pptdee = int(''.join([x for x in ptdee if x.isdigit()]))
+						pptdee = float(ptdee)
 						# ptdeee = format(ptdee, '0.2f')
 						# ptdeee = '%.2f' % ptdee
 							# user.objects.filter(uid=user_id)
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + ppbmr+'\n每日總消耗熱量：' + pptdee))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
