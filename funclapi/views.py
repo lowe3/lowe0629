@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, seven
+from .models import user, wefamily, seven, user
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily
+from funclapi.models import user, seven, wefamily, user
 import random
 
 
@@ -88,7 +88,7 @@ def callback(request):
 						# ptdeee = format(ptdee, '0.2f')
 						# ptdeee = '%.2f' % ptdee
 							# user.objects.filter(uid=user_id)
-						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+						unit = users.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
 					else :

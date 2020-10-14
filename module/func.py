@@ -3,7 +3,7 @@ from django.conf import settings
 from linebot import LineBotApi
 from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction, ButtonsTemplate, URITemplateAction, ConfirmTemplate, PostbackTemplateAction, TemplateSendMessage
 import random
-from funclapi.models import user, seven, wefamily
+from funclapi.models import users, seven, wefamily, user
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
