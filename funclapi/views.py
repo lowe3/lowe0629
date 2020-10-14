@@ -88,9 +88,9 @@ def callback(request):
 						# pptdee = float(ptdee)
 						# ptdeee = format(ptdee, '0.2f')
 						# ptdeee = '%.2f' % ptdee
-						if users.objects.filter(uid=user_id):
-							unit = users.objects.update(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-							unit.save()
+							if users.objects.filter(uid=user_id):
+								unit = users.objects.update(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+								unit.save()
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已上傳過您的ID資料了'))
 						else : 	
 						unit = users.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
