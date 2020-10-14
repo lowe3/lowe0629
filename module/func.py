@@ -48,3 +48,24 @@ def sendQuickreply(event):
 		line_bot_api.reply_message(event.reply_token,message)
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+def sendchoise(event):
+	try:
+		message = TemplateSendMessage(
+			alt_text="確認超商",
+			template=ConfirmTemplate(
+				text="請選擇你購買食品的超商",
+				actions=[
+					PostbackTemplateAction(
+						label="7-11",
+						data="7-11"
+					),
+					PostbackTemplateAction(
+						label="全家"
+						data="全家"
+					)
+				]
+			)
+		)	
+		line_bot_api.reply_message(event.reply_token,message)
+	except:
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))	
