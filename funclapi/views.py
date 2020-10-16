@@ -81,7 +81,7 @@ def callback(request):
 						pbmr = flist[5]
 						ptdee = flist[6]
 						user_id = event.source.user_id
-						if user.objects.get(uid='U8b9bc9dcfc31df64d62f4491129eaec9'):
+						if user.objects.get(uid=user_id):
 							# uids=user.objects.get(uid==user_id)
 							# uids.update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
