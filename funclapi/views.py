@@ -74,27 +74,20 @@ def callback(request):
 							'飲食多樣化，選擇當季在地食材。'])))
 					elif mtext[:3] == '###':  #處理LIFF傳回的FORM資料
 						flist = mtext[3:].split()
-						# new_mtext = mtext[3:]
-						# flist = new_mtext.split('/n')  #去除前三個「#」字元再分解字串
 						pheight = flist[0]  #取得輸入資料
 						pweight = flist[1]
 						page = flist[2]
 						pgender = flist[3]
 						pbmr = flist[5]
-						# ppbmr = float(pbmr)
-						# pbmrr = format(pbmr, '0.2f')
-						# pbmrr = '%.2f' % pbmr
 						ptdee = flist[6]
-						# pptdee = float(ptdee)
-						# ptdeee = format(ptdee, '0.2f')
-						# ptdeee = '%.2f' % ptdee
-							if user.objects.filter(uid=user_id):
-								user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
-						else : 	
+
+							# if user.objects.filter(uid=user_id):
+								# user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
+						# else : 	
 						unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 						unit.save()
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr+'\n每日總消耗熱量：' + ptdee))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
