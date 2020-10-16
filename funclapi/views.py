@@ -80,7 +80,6 @@ def callback(request):
 						pgender = flist[3]
 						pbmr = flist[5]
 						ptdee = flist[6]
-
 							if user.objects.filter(uid==user_id):
 								user.objects.filter(uid==user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
