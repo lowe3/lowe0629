@@ -80,12 +80,12 @@ def callback(request):
 						pgender = flist[3]
 						pbmr = flist[5]
 						ptdee = flist[6]
-						# if users.objects.get(uid==user_id):
-							# uids=users.objects.get(uid==user_id)
+						# if user.objects.get(uid==user_id):
+							# uids=user.objects.get(uid==user_id)
 							# uids.update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
 						# else: 	
-							unit = users.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+							unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							unit.save()
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					else :
