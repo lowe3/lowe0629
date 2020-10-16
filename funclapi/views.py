@@ -82,8 +82,7 @@ def callback(request):
 						ptdee = flist[6]
 						user_id = event.source.user_id
 						if user.objects.get(uid=user_id):
-							uids=user.objects.get(uid=user_id)
-							uids.update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+							user.objects.get(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='已更新您的基本資料'))
 						else: 	
 							unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
