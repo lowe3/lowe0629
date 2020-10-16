@@ -80,6 +80,7 @@ def callback(request):
 						pgender = flist[3]
 						pbmr = flist[5]
 						ptdee = flist[6]
+						user_id = event.source.user_id
 						if user.objects.get(uid==user_id):
 							# uids=user.objects.get(uid==user_id)
 							# uids.update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
