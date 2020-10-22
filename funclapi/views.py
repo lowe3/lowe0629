@@ -89,7 +89,7 @@ def callback(request):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					elif seven.objects.filter(items__contains=mtext).exists():
 						for sitems in seven:
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + sitems.items + '\n熱量' + sitems.calories + '\n圖片' + sitems.picture))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
