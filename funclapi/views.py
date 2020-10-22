@@ -43,6 +43,10 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '餐點紀錄':
 						func.sendQuickreply(event)
+					elif mtext == '@7-11':
+						func.sendQuickreply(event1)
+					elif mtext == '@全家':
+						func.sendQuickreply(event2)
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
