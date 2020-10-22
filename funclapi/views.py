@@ -41,7 +41,7 @@ def callback(request):
 						unit = user.objects.create(uid=user_id)
 						unit.save()					
 					mtext = event.message.text
-					if mtext == '好':
+					if mtext == '餐點紀錄'':
 						func.sendQuickreply(event)
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
@@ -57,9 +57,9 @@ def callback(request):
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+yye+'歲，請輸入您的性別，EX：男性'))
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
-					elif mtext == '餐點紀錄':
+					elif mtext == '食物熱量查詢':
 						# func.sendchoise(event)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您這餐吃了什麼?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您想查詢什麼?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)							
 					elif mtext == '飲食小知識':
