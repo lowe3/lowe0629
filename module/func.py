@@ -40,45 +40,45 @@ def sendQuickreply(event):
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 		
-def sendQuickreply(event1):
-	try:
-		message = TextSendMessage(
-		text='請選擇您目前是哪一餐',
-		quick_reply=QuickReply(
-			items=[
-				QuickReplyButton(
-				action=MessageAction(label="早餐",text="@早餐")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="午餐",text="@午餐")
-			), 
-				QuickReplyButton(
-				action=MessageAction(label="晚餐",text="@晚餐")
-			),
-			]))
-		line_bot_api.reply_message(event.reply_token,message)
-	except:
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+# def sendQuickreply(event1):
+	# try:
+		# message = TextSendMessage(
+		# text='請選擇您目前是哪一餐',
+		# quick_reply=QuickReply(
+			# items=[
+				# QuickReplyButton(
+				# action=MessageAction(label="早餐",text="@早餐")
+			# ),  
+				# QuickReplyButton(
+				# action=MessageAction(label="午餐",text="@午餐")
+			# ), 
+				# QuickReplyButton(
+				# action=MessageAction(label="晚餐",text="@晚餐")
+			# ),
+			# ]))
+		# line_bot_api.reply_message(event.reply_token,message)
+	# except:
+		# line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 
-def sendQuickreply(event2):
-	try:
-		message = TextSendMessage(
-		text='請選擇您目前是哪一餐',
-		quick_reply=QuickReply(
-			items=[
-				QuickReplyButton(
-				action=MessageAction(label="早餐",text="@早餐")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="午餐",text="@午餐")
-			), 
-				QuickReplyButton(
-				action=MessageAction(label="晚餐",text="@晚餐")
-			),
-			]))
-		line_bot_api.reply_message(event.reply_token,message)
-	except:
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+# def sendQuickreply(event2):
+	# try:
+		# message = TextSendMessage(
+		# text='請選擇您目前是哪一餐',
+		# quick_reply=QuickReply(
+			# items=[
+				# QuickReplyButton(
+				# action=MessageAction(label="早餐",text="@早餐")
+			# ),  
+				# QuickReplyButton(
+				# action=MessageAction(label="午餐",text="@午餐")
+			# ), 
+				# QuickReplyButton(
+				# action=MessageAction(label="晚餐",text="@晚餐")
+			# ),
+			# ]))
+		# line_bot_api.reply_message(event.reply_token,message)
+	# except:
+		# line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 # def sendchoise(event):
 	# try:
 		# message = TemplateSendMessage(
