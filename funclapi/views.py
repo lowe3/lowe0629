@@ -44,7 +44,7 @@ def callback(request):
 					if mtext == '餐點紀錄':
 						func.sendQuickreply(event)
 					elif mtext == '@7-11':
-						func.sendQuickreply(7-11)
+						func.sendQuickreply(seven)
 					# elif mtext == '@全家':
 						# func.sendQuickreply(event2)
 					# elif mtext[-2:] == '公分':

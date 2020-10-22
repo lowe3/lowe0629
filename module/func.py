@@ -40,7 +40,7 @@ def sendQuickreply(event):
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 		
-def sendQuickreply(7-11):
+def sendQuickreply(seven):
 	try:
 		message = TextSendMessage(
 		text='請選擇您目前是哪一餐',
