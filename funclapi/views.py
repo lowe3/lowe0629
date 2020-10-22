@@ -44,10 +44,10 @@ def callback(request):
 					if mtext == '好':
 						func.sendQuickreply(event)
 					elif seven.objects.filter(items__contains=mtext):
-						content = ''
-						for sitems in seven:
-							content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=context)
+						# content = ''
+						# for sitems in seven:
+							# content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='1')
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
