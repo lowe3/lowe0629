@@ -45,11 +45,11 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
-					elif mtext == sitems:
-						content = ''
-						for seven in sitems:
-							content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=context)
+					# elif mtext == sitems:
+						# content = ''
+						# for seven in sitems:
+							# content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
+						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=context)
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
