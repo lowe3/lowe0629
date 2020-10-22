@@ -40,9 +40,16 @@ def callback(request):
 					if not (user.objects.filter(uid=user_id).exists()):
 						unit = user.objects.create(uid=user_id)
 						unit.save()
+					sitems = seven.objects.filter(items=event.message.text)
+					witems = wefamily.objects.filter(items=event.message.text)					
 					mtext = event.message.text
 					if mtext == '好':
 						func.sendQuickreply(event)
+					elif mtext == sitems:
+						content = ''
+						for seven in sitems:
+							content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=context)
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
@@ -87,10 +94,6 @@ def callback(request):
 						if user.objects.get(uid=user_id):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
-						# else : 	
-							# unit = user.objects.create(uid=user_id, height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
-							# unit.save()
-							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text= '您的個人資料已輸入成功，資料如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
