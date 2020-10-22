@@ -91,7 +91,7 @@ def callback(request):
 						# content = ''
 						# for sitems in seven:
 							# content += '品名:' + seven.items + '\n熱量' + seven.calories + '\n圖片' + seven.picture
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='1')
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='1'))
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
