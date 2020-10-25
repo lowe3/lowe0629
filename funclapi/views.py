@@ -9,7 +9,7 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily, users
+from funclapi.models import user, seven, wefamily, users, food
 import random
 
 
@@ -91,12 +91,9 @@ def callback(request):
 						if user.objects.get(uid=user_id):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
-					elif seven.objects.filter(items__contains=mtext).exists():
-						for sitems in seven.objects.filter(items__contains=mtext):
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + sitems.items + '\n熱量:' + sitems.calories + '\n圖片:' + sitems.picture))
-					elif wefamily.objects.filter(items__contains=mtext).exists():
-						for witems in wefamily.objects.filter(items__contains=mtext):
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + witems.items + '\n熱量:' + witems.calories + '\n圖片:' + witems.picture))							
+					elif food.objects.filter(items__contains=mtext).exists():
+						for fitems in food.objects.filter(items__contains=mtext):
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + sitems.items + '\n熱量:' + sitems.calories + '\n圖片:' + sitems.picture + '\n超商' + fitems.convenience + '\n種類' + fitems))							
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
 		return HttpResponse()
