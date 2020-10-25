@@ -47,4 +47,13 @@ class wefamily(models.Model):
 	
 	def _str_(self):
 		return self.items
-
+		
+class food(models.Model):
+	items = models.CharField(max_length=250, null=False)
+	calories = models.CharField(max_length=100, null=False)
+	picture = models.CharField(max_length=250, null=True)
+	convenience = models.CharField(max_length=100, null=False)
+	kind = models.CharField(max_length=100, null=False)
+	
+	def _str_(self):
+		return self.items
