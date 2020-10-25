@@ -62,8 +62,7 @@ def callback(request):
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '食物熱量查詢':
-						# func.sendchoise(event)
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請問您想查詢什麼?'))
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='請輸入您想查詢的食物?'))
 					elif mtext == '推薦菜單':
 						func.sendImage(event)							
 					elif mtext == '飲食小知識':
