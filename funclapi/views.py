@@ -43,6 +43,11 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '餐點紀錄':
 						func.sendQuickreply(event)
+					elif mtext == '飯類':
+						content = ''
+						for fitems in food.objects.filter(kind__contains=mtext):
+							content += food.items + '\n' + food.calories + '\n' + food.picture + '\n' + food.convenience + '\n\n'
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=content))
 					# elif mtext == '@7-11':
 						# func.sendQuickreply(seven)
 					# elif mtext == '@全家':
