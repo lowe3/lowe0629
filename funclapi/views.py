@@ -49,10 +49,6 @@ def callback(request):
 						# for fitems in food.objects.filter(kind__contains=mtext):
 							# content += food.items + '\n' + food.calories + '\n' + food.picture + '\n' + food.convenience + '\n\n'
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=content))
-					# elif mtext == '@7-11':
-						# func.sendQuickreply(seven)
-					# elif mtext == '@全家':
-						# func.sendQuickreply(event2)
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
