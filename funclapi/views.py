@@ -94,10 +94,10 @@ def callback(request):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split("$",4)
-						edate = flist[0]  #取得輸入資料
-						etime = flist[1]
-						eitems = flist[4]
+						plist = mtext[3:].split("$",4)
+						edate = plist[0]  #取得輸入資料
+						etime = plist[1]
+						eitems = plist[4]
 						# user_id = event.source.user_id
 						# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
 							# for fitems in food.objects.filter(items=flist[3]):
