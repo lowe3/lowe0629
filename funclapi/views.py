@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, seven, users
+from .models import user, wefamily, seven, users, eat
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily, users, food
+from funclapi.models import user, seven, wefamily, users, food, eat
 import random
 
 
@@ -93,6 +93,19 @@ def callback(request):
 						if user.objects.get(uid=user_id):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
+					elif mtext[:3] == '***':  #處理LIFF傳回的FORM資料
+						flist = mtext[3:].split('/')
+						edatetime = flist[0]  #取得輸入資料
+						eitems = flist[3]
+						user_id = event.source.user_id
+						if food.objects.filter(items=flist[3]).exists() and user.objects.get(uid=user_id).exists():
+							for fitems in food.objects.filter(items=flist[3]):
+							ecalories = fitems.calories
+							for fuser in user.objects.get(uid=user_id)
+							ebmr = fuser.bmr
+							etdee = fuser.tdee
+							eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, datetime=edatetime, items=eitems, calories=ecalories)  #寫入資料庫
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n時間：'+ edatetime +'\n產品名稱：'+ eitems +'\n熱量：' + ecalories )
 					elif food.objects.filter(items__contains=mtext).exists():
 						for fitems in food.objects.filter(items__contains=mtext):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + fitems.calories + '\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
