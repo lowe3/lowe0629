@@ -97,10 +97,10 @@ def callback(request):
 						for fitems in food.objects.filter(items__contains=mtext):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + fitems.calories + '\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						# flist = mtext[20:].split('$')
+						flist = mtext[3:].split()
 						# edate = flist[0]  #取得輸入資料
 						# etime = flist[1]
-						# eitems = flist[4]
+						eitems = flist[4]
 						# user_id = event.source.user_id
 						# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
 							# for fitems in food.objects.filter(items=flist[3]):
@@ -109,7 +109,7 @@ def callback(request):
 							# ebmr = fuser.bmr
 							# etdee = fuser.tdee
 							# eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, date=edate, time=etime, items=eitems, calories=ecalories)  #寫入資料庫
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'+eitems))
 							# +'\n熱量：' + ecalories
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
