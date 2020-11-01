@@ -94,8 +94,8 @@ def callback(request):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split("$", 4)
-						edate = flist[0]  #取得輸入資料
+						# flist = mtext[3:].split("$",4)
+						# edate = flist[0]  #取得輸入資料
 						# etime = flist[1]
 						# eitems = flist[4]
 						# user_id = event.source.user_id
@@ -106,8 +106,7 @@ def callback(request):
 							# ebmr = fuser.bmr
 							# etdee = fuser.tdee
 							# eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, date=edate, time=etime, items=eitems, calories=ecalories)  #寫入資料庫
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=edate))
-							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'+eitems))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'))
 							# +'\n熱量：' + ecalories
 					elif food.objects.filter(items__contains=mtext).exists():
 						for fitems in food.objects.filter(items__contains=mtext):
