@@ -58,3 +58,14 @@ class food(models.Model):
 	def _str_(self):
 		return self.items
 
+class eat(models.Model):
+	uid = models.CharField(max_length=100, null=False)
+	bmr = models.CharField(max_length=100, null=False)
+	tdee = models.CharField(max_length=100, null=False)
+	date = models.DateField(null=False)
+	time = models.TimeField(null=False)
+	items = models.CharField(max_length=250, null=False)
+	calories = models.CharField(max_length=100, null=False)
+	
+	def _str_(self):
+		return self.uid
