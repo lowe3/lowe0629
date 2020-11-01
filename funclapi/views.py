@@ -42,10 +42,10 @@ def callback(request):
 						unit.save()					
 					mtext = event.message.text
 					if mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split()
+						list = mtext[3:].split()
 						# edate = flist[0]  #取得輸入資料
 						# etime = flist[1]
-						eitems = flist[4]
+						eitems = list[4]
 						# user_id = event.source.user_id
 						# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
 							# for fitems in food.objects.filter(items=flist[3]):
