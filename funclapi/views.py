@@ -97,10 +97,10 @@ def callback(request):
 						for fitems in food.objects.filter(items__contains=mtext):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + fitems.calories + '\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						flist = mtext[3:].split()
+						flist1 = mtext[3:].split()
 						# edate = flist[0]  #取得輸入資料
 						# etime = flist[1]
-						eitems = flist[4]
+						eitems = flist1[4]
 						# user_id = event.source.user_id
 						# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
 							# for fitems in food.objects.filter(items=flist[3]):
