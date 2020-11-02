@@ -3,18 +3,10 @@ from django.conf import settings
 from linebot import LineBotApi
 from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction, ButtonsTemplate, URITemplateAction, ConfirmTemplate, PostbackTemplateAction, TemplateSendMessage
 import random
-from funclapi.models import users, seven, wefamily, user, food, eat
+from funclapi.models import users, seven, wefamily, user, food
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
-def sendText(event):
-	try:
-		message = TextSendMessage(
-			text = "你的基礎代謝率為1024，請回傳好。"
-		)
-		line_bot_api.reply_message(event.reply_token,message)
-	except:
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 def sendImage(event):
 	try:
 		message = ImageSendMessage(
@@ -23,85 +15,23 @@ def sendImage(event):
 		line_bot_api.reply_message(event.reply_token,message)
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
-# def sendQuickreply(event):
-	# try:
-		# message = TextSendMessage(
-		# text='請選擇超商',
-		# quick_reply=QuickReply(
-			# items=[
-				# QuickReplyButton(
-				# action=MessageAction(label="7-11",text="@7-11")
-			# ),  
-				# QuickReplyButton(
-				# action=MessageAction(label="全家",text="@全家")
-			# ), 
-			# ]))
-		# line_bot_api.reply_message(event.reply_token,message)
-	# except:
-		# line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
-
-def sendQuickreply(event):
+	
+def manageForm(event, mtext, user_id):
 	try:
-		message = TextSendMessage(
-		text='請選擇種類',
-		quick_reply=QuickReply(
-			items=[
-				QuickReplyButton(
-				action=MessageAction(label="飯類",text="飯類")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="麵類",text="麵類")
-			), 
-				QuickReplyButton(
-				action=MessageAction(label="麵包",text="麵包")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="甜點",text="甜點")
-			),
-				QuickReplyButton(
-				action=MessageAction(label="沙拉",text="沙拉")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="關東煮",text="關東煮")
-			),
-				QuickReplyButton(
-				action=MessageAction(label="湯類",text="湯類")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="水果",text="水果")
-			),
-				QuickReplyButton(
-				action=MessageAction(label="飲料",text="飲料")
-			),  
-				QuickReplyButton(
-				action=MessageAction(label="其他",text="其他")
-			),	
-				QuickReplyButton(
-				action=MessageAction(label="醬料",text="醬料")
-			),			
-			]))
-		line_bot_api.reply_message(event.reply_token,message)
+		flist = mtext[3:].split()
+		edatetime = flist[0]		#取得輸入資料
+		datetimee = datetime.datetime.strptime(str_p,'%Y-%m-%d %H:%M')
+		date_time = datetimee.strftime("%m-%d-%Y, %H:%M")
+		eitems = flist[3]
+		# user_id = event.source.user_id
+		# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
+			# for fitems in food.objects.filter(items=flist[3]):
+				# ecalories = fitems.calories
+			# for fuser in user.objects.filter(uid=user_id)
+				# ebmr = fuser.bmr
+				# etdee = fuser.tdee
+		# unit = eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, date=edate, time=etime, items=eitems, calories=ecalories)  #寫入資料庫
+		# unit.save()
+		line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edatetime+'\n產品名稱：'+eitems))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
-
-# def sendchoise(event):
-	# try:
-		# message = TemplateSendMessage(
-			# alt_text="確認超商",
-			# template=ConfirmTemplate(
-				# text="請選擇你購買食品的超商",
-				# actions=[
-					# MessageTemplateAction(
-						# label="7-11",
-						# data="7-11"
-					# ),
-					# MessageTemplateAction(
-						# label="全家"
-						# data="全家"
-					# )
-				# ]
-			# )
-		# )	
-		# line_bot_api.reply_message(event.reply_token,message)
-	# except:
-		# line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))	

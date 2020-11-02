@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, seven, users, eat
+from .models import user, wefamily, seven, users
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily, users, food, eat
+from funclapi.models import user, seven, wefamily, users, food
 import random
 
 
@@ -42,6 +42,7 @@ def callback(request):
 						unit.save()					
 					mtext = event.message.text
 					if mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
+						func.manageForm(event, mtext, user_id)
 						# list = mtext[3:].split()
 						# edate = flist[0]  #取得輸入資料
 						# etime = flist[1]
@@ -54,7 +55,7 @@ def callback(request):
 							# ebmr = fuser.bmr
 							# etdee = fuser.tdee
 							# eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, date=edate, time=etime, items=eitems, calories=ecalories)  #寫入資料庫
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'))
+							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'))
 							# +'\n熱量：' + ecalories
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
