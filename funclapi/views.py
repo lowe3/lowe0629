@@ -59,24 +59,10 @@ def callback(request):
 							# +'\n熱量：' + ecalories
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
-						# func.sendQuickreply(event)
-					# elif mtext == '飯類':
-						# content = ''
-						# for fitems in food.objects.filter(kind__contains=mtext):
-							# content += food.items + '\n' + food.calories + '\n' + food.picture + '\n' + food.convenience + '\n\n'
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=content))
 					# elif mtext[-2:] == '公分':
 						# he = int(''.join([x for x in mtext if x.isdigit()]))
 						# hhe = '%d'%he
 						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的身高是'+hhe+'公分，請輸入您的體重，EX:50公斤'))
-					# elif mtext[-2:] == '公斤':
-						# we = int(''.join([x for x in mtext if x.isdigit()]))
-						# wwe = '%d'%we
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的體重是'+wwe+'公斤，請輸入您的年齡，EX：18歲'))
-					# elif mtext[-1] == '歲':
-						# ye = int(''.join([x for x in mtext if x.isdigit()]))
-						# yye = '%d'%ye
-						# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的年齡是'+yye+'歲，請輸入您的性別，EX：男性'))
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '食物熱量查詢':
@@ -118,5 +104,4 @@ def callback(request):
 		return HttpResponse()
 	else:
 		return HttpResponseBadRequest()
-					
-# Create your views here.
+
