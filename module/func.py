@@ -23,7 +23,7 @@ def manageForm(event, mtext, user_id):
 		edt = int(''.join([x for x in edatetime if x.isdigit()]))
 		dte = '%d'%edt
 		datetimee = datetime.strptime(dte, '%Y-%m-%d %H:%M')
-		date_time = datetimee.strftime("%m-%d-%Y, %H:%M")
+		date_time = datetime.strftime("%m-%d-%Y, %H:%M")
 		eitems = flist[3]
 		# user_id = event.source.user_id
 		# if food.objects.filter(items=eitems).exists():
@@ -32,6 +32,6 @@ def manageForm(event, mtext, user_id):
 			# for fuser in user.objects.get(uid=user_id):
 			unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=datetimee, items=eitems, calories=fitems.calories)  #寫入資料庫
 			unit.save()
-			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+date_time+'\n產品名稱：'+eitems+content+user.objects.get(uid=user_id).bmr))
+			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+date_time+'\n產品名稱：'+eitems+content))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
