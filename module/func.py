@@ -24,8 +24,8 @@ def manageForm(event, mtext, user_id):
 		# date_time = datetimee.strftime("%m-%d-%Y, %H:%M")
 		eitems = flist[3]
 		# user_id = event.source.user_id
-		if food.objects.filter(items=flist[3]).exists():
-			for fitems in food.objects.filter(items=flist[3]):
+		if food.objects.filter(items=eitems).exists():
+			for fitems in food.objects.filter(items=eitems):
 			for fuser in user.objects.filter(uid=user_id)
 		# unit = eat.objects.create(uid=user_id, bmr=fuser.bmr, tdee=fuser.tdee, datetime=datetimee, items=eitems, calories=fitems.calories)  #寫入資料庫
 		# unit.save()
