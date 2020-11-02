@@ -24,11 +24,11 @@ def manageForm(event, mtext, user_id):
 		# date_time = datetimee.strftime("%m-%d-%Y, %H:%M")
 		eitems = flist[3]
 		# user_id = event.source.user_id
-		# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
-			# for fitems in food.objects.filter(items=flist[3]):
-			# for fuser in user.objects.filter(uid=user_id)
+		if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
+			for fitems in food.objects.filter(items=flist[3]):
+			for fuser in user.objects.filter(uid=user_id)
 		# unit = eat.objects.create(uid=user_id, bmr=fuser.bmr, tdee=fuser.tdee, datetime=datetimee, items=eitems, calories=fitems.calories)  #寫入資料庫
 		# unit.save()
-		line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edatetime+'\n產品名稱：'+eitems+'\n熱量:'))
+		line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edatetime+'\n產品名稱：'+eitems+'\n熱量:'+fitems.calories))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
