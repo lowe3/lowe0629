@@ -20,9 +20,9 @@ def manageForm(event, mtext, user_id):
 	try:
 		flist = mtext[3:].split()
 		edatetime = flist[0]		#取得輸入資料
-		edt = ''.join([x for x in edatetime if x.isdigit()])     #抓取數字
-		datetimee = datetime.strptime(edt, '%Y-%m-%d %H:%M')
-		date_time = datetime.strftime(datetimee, "%m-%d-%Y, %H:%M")
+		# edt = ''.join([x for x in edatetime if x.isdigit()])     #抓取數字
+		# datetimee = datetime.strptime(edt, '%Y-%m-%d %H:%M')
+		# date_time = datetime.strftime(datetimee, "%m-%d-%Y, %H:%M")
 		eitems = flist[3]
 		# user_id = event.source.user_id
 		# if food.objects.filter(items=eitems).exists():
