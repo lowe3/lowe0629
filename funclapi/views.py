@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, seven, users
+from .models import user, wefamily, seven, users, eat
 
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily, users, food
+from funclapi.models import user, seven, wefamily, users, food, eat
 import random
 
 
