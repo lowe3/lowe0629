@@ -57,7 +57,9 @@ def callback(request):
 						func.sendQuickreply(event)	
 					elif mtext == '@飯類':
 						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=dt))						
+						dtt = int(''.join([x for x in dt if x.isdigit()]))
+						ddt = '%d'%dtt
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+dtt))						
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
