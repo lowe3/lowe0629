@@ -42,10 +42,17 @@ def callback(request):
 						unit.save()					
 					mtext = event.message.text
 					if mtext == '@飯類':
-						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
+						dt[:10] = datetime.now().strftime('%Y-%m-%d-%H-%M')
 						dtt = int(''.join([x for x in dt if x.isdigit()]))
 						ddt = '%d'%dtt
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+ddt))	
+						for feat in eat.objects.filter(uid=user_id):
+							fdt[:10] = feat.datetime
+							fdtt = int(''.join([x for x in dt if x.isdigit()]))
+							fddt = '%d'%fdtt
+							fd = ddt-fddt
+							# if fd == 0:
+								
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+fd))	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
