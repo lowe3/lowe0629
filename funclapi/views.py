@@ -43,7 +43,7 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '@飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
-						for feat in eat.objects.filter(uid=user_id and datetime__contains=dt):
+						# for feat in eat.objects.filter(uid=user_id and datetime__contains=dt):
 							
 								
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+dt))	
