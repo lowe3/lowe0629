@@ -42,11 +42,11 @@ def callback(request):
 						unit.save()					
 					mtext = event.message.text
 					if mtext == '@飯類':
-						dt[:10] = datetime.now().strftime('%Y-%m-%d-%H-%M')
+						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
 						dtt = int(''.join([x for x in dt if x.isdigit()]))
 						ddt = '%d'%dtt
 						for feat in eat.objects.filter(uid=user_id):
-							fdt[:10] = feat.datetime
+							fdt = feat.datetime
 							fdtt = int(''.join([x for x in dt if x.isdigit()]))
 							fddt = '%d'%fdtt
 							fd = ddt-fddt
