@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from .models import user, wefamily, seven, users, eat
-
+from datetime import datetime, timedelta
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
@@ -54,7 +54,10 @@ def callback(request):
 					elif mtext == '食物熱量查詢':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='可直接輸入欲查詢之食物，也可點擊下面網址查詢：'+ '\n' + 'https://liff.line.me/1655188974-Jd80vNk8'))
 					elif mtext == '推薦菜單':
-						func.sendQuickreply(event)							
+						func.sendQuickreply(event)	
+					elif mtext == '@飯類':
+						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text=dt))						
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
