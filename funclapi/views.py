@@ -45,7 +45,7 @@ def callback(request):
 						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
 						dtt = int(''.join([x for x in dt if x.isdigit()]))
 						ddt = '%d'%dtt
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+dtt))	
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+ddt))	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
