@@ -41,7 +41,12 @@ def callback(request):
 						unit = user.objects.create(uid=user_id)
 						unit.save()					
 					mtext = event.message.text
-					if mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
+					if mtext == '@飯類':
+						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
+						dtt = int(''.join([x for x in dt if x.isdigit()]))
+						ddt = '%d'%dtt
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+dtt))	
+					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
@@ -54,12 +59,7 @@ def callback(request):
 					elif mtext == '食物熱量查詢':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='可直接輸入欲查詢之食物，也可點擊下面網址查詢：'+ '\n' + 'https://liff.line.me/1655188974-Jd80vNk8'))
 					elif mtext == '推薦菜單':
-						func.sendQuickreply(event)	
-					elif mtext == '@飯類':
-						dt = datetime.now().strftime('%Y-%m-%d-%H-%M')
-						dtt = int(''.join([x for x in dt if x.isdigit()]))
-						ddt = '%d'%dtt
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='目前時間'+dtt))						
+						func.sendQuickreply(event)						
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
