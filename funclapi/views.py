@@ -54,7 +54,7 @@ def callback(request):
 					elif mtext == '食物熱量查詢':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='可直接輸入欲查詢之食物，也可點擊下面網址查詢：'+ '\n' + 'https://liff.line.me/1655188974-Jd80vNk8'))
 					elif mtext == '推薦菜單':
-						def sendQuickreply(event)							
+						func.sendQuickreply(event)							
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
