@@ -20,17 +20,57 @@ def manageForm(event, mtext, user_id):
 	try:
 		flist = mtext[3:].split()
 		edatetime = flist[0]		#取得輸入資料
-		# edt = ''.join([x for x in edatetime if x.isdigit()])     #抓取數字
-		# datetimee = datetime.strptime(edatetime, "%Y-%m-%d-%H:%M")
-		# date_time = datetime.strftime(datetimee, "%m-%d-%Y, %H:%M")
 		eitems = flist[3]
-		# user_id = event.source.user_id
-		# if food.objects.filter(items=eitems).exists():
 		for fitems in food.objects.filter(items=eitems):
 			content='\n熱量:'+fitems.calories
-			# for fuser in user.objects.get(uid=user_id):
 			unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edatetime, items=eitems, calories=fitems.calories)  #寫入資料庫
 			unit.save()
 			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edatetime+'\n產品名稱：'+eitems+content))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
+
+def sendQuickreply(event):  #快速選單
+    try:
+        message = TextSendMessage(
+            text='請選擇您現在想吃的種類',
+            quick_reply=QuickReply(
+                items=[
+                    QuickReplyButton(
+                        action=MessageAction(label="飯類", text="@飯類")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="麵類", text="@麵類")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="沙拉", text="@沙拉")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="麵包", text="@麵包")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="飲料", text="@飲料")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="關東煮", text="@關東煮")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="甜點", text="@甜點")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="湯類", text="@湯類")
+                    ),	
+                    QuickReplyButton(
+                        action=MessageAction(label="水果", text="@水果")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="醬料", text="@醬料")
+                    ),
+                    QuickReplyButton(
+                        action=MessageAction(label="其他", text="@其他")
+                    ),					
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token,message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))

@@ -43,20 +43,6 @@ def callback(request):
 					mtext = event.message.text
 					if mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
-						# list = mtext[3:].split()
-						# edate = flist[0]  #取得輸入資料
-						# etime = flist[1]
-						# eitems = list[4]
-						# user_id = event.source.user_id
-						# if food.objects.filter(items=flist[3]).exists() and user.objects.filter(uid=user_id).exists():
-							# for fitems in food.objects.filter(items=flist[3]):
-							# ecalories = fitems.calories
-							# for fuser in user.objects.filter(uid=user_id)
-							# ebmr = fuser.bmr
-							# etdee = fuser.tdee
-							# eat.objects.create(uid=user_id, bmr=ebmr, tdee=etdee, date=edate, time=etime, items=eitems, calories=ecalories)  #寫入資料庫
-							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n產品名稱：'))
-							# +'\n熱量：' + ecalories
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
 					# elif mtext[-2:] == '公分':
@@ -66,10 +52,9 @@ def callback(request):
 					elif mtext == '基本資料':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654777422-nzqQ2eyK'))
 					elif mtext == '食物熱量查詢':
-						# func.sendchoise(event)
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='可直接輸入欲查詢之食物，也可點擊下面網址查詢：'+ '\n' + 'https://liff.line.me/1655188974-Jd80vNk8'))
 					elif mtext == '推薦菜單':
-						func.sendImage(event)							
+						def sendQuickreply(event)							
 					elif mtext == '飲食小知識':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(
 							text = random.choice(['常吃宵夜對胃產生不好的影響，因為胃一整天都得不到休息。',
