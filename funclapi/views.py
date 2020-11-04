@@ -88,7 +88,7 @@ def callback(request):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					elif food.objects.filter(items__contains=mtext).exists():
 						for fitems in food.objects.filter(items__contains=mtext):
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + fitems.calories + '\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + str(fitems.calories) + '\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
 
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
