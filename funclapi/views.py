@@ -10,7 +10,7 @@ from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
 from funclapi.models import user, seven, wefamily, users, food, eat
-# from django.db.models import Avg, Sum, Max, Min, Count
+from django.db.models import Avg, Sum, Max, Min, Count
 import random
 
 
@@ -49,7 +49,7 @@ def callback(request):
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
 						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
 							# toeat = eat.objects.filter(uid=user_id, datetime__contains=dt)
-							tcal = eat.objects.all().annotate(s=Sum('calories')).filter(uid=user_id, datetime__contains=dt).values('uid', 's')
+							tcal = eat.objects.all().annotate(s=Sum('calories')).filter(uid=user_id, datetime__contains=dt).values('s')
 							# tcal = toeat.annotate(Sum('calories'))
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tcal))
