@@ -47,7 +47,7 @@ def callback(request):
 					elif mtext == '@飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
-						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+						if eat.objects.filter(uid=user_id, datetime__contains=dt):
 							toeat= eat.objects.filter(uid=user_id, datetime__contains=dt).annotate(Sum('calories'))
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=toeat)	
