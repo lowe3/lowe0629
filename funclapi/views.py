@@ -47,7 +47,7 @@ def callback(request):
 					elif mtext == '@飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
-						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+						if eat.objects.get(uid=user_id, datetime__contains=dt):
 							# toeat = eat.objects.filter(uid=user_id, datetime__contains=dt)
 							# tcal = '2589'
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
