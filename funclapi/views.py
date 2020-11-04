@@ -41,7 +41,6 @@ def callback(request):
 					if not (user.objects.filter(uid=user_id).exists()):
 						unit = user.objects.create(uid=user_id)
 						unit.save()	
-					# if 	
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
@@ -49,9 +48,9 @@ def callback(request):
 						dt = datetime.now().strftime('%Y-%m-%d')
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
 						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
-							teat = eat.objects.filter(uid=user_id, datetime__contains=dt).aggregate(Sum('calories'))
+							teat = eat.objects.filter(uid=user_id, datetime__contains=dt).calories(Sum)
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='今日總攝取' + teat + '大卡')	
+							ine_bot_api.reply_message(event.reply_token, TextSendMessage(text='今日總攝取' + teat + '大卡')	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
