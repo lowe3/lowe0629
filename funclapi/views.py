@@ -44,12 +44,13 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
-					# elif mtext == '@飯類':
-						# dt = datetime.now().strftime('%Y-%m-%d')
+					elif mtext == '@飯類':
+						dt = datetime.now().strftime('%Y-%m-%d')
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
-						# if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+							teat = eat.objects.all().aggregate(Sum('calories'))
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
-							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=content))	
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='今日總攝取' + str(teat) + '大卡')	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
