@@ -2,14 +2,16 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, seven, users, food, eat
+from .models import user, wefamily, seven, users
+# , food, eat
 from datetime import datetime, timedelta
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, seven, wefamily, users, food, eat
+from funclapi.models import user, seven, wefamily, users
+# , food, eat
 import random
 
 
@@ -39,7 +41,8 @@ def callback(request):
 					user_id = event.source.user_id
 					if not (user.objects.filter(uid=user_id).exists()):
 						unit = user.objects.create(uid=user_id)
-						unit.save()					
+						unit.save()	
+					# if 	
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
@@ -49,8 +52,8 @@ def callback(request):
 						# if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
 							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=content))	
-					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						func.manageForm(event, mtext, user_id)
+					# elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
+						# func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
 					# elif mtext[-2:] == '公分':
@@ -86,9 +89,9 @@ def callback(request):
 						if user.objects.get(uid=user_id):
 							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
-					elif food.objects.filter(items__contains=mtext).exists():
-						for fitems in food.objects.filter(items__contains=mtext):
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + str(fitems.calories) + '大卡\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
+					# elif food.objects.filter(items__contains=mtext).exists():
+						# for fitems in food.objects.filter(items__contains=mtext):
+							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='品名:' + fitems.items + '\n熱量:' + str(fitems.calories) + '大卡\n圖片:' + fitems.picture + '\n超商:' + fitems.convenience + '\n種類:' + fitems.kind))							
 
 					else :
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='回傳錯誤'))						
