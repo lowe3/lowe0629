@@ -49,7 +49,7 @@ def callback(request):
 						# for feat in eat.objects.filter(uid=user_id, datetime__contains=dt):	
 						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=eat.objects.filter(uid=user_id, datetime__contains=dt).aggregate(Sum('calories'))+'大卡')	
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=eat.objects.filter(uid=user_id, datetime__contains=dt).annotate(Sum('calories'))+'大卡')	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
