@@ -51,7 +51,7 @@ def callback(request):
 						if eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
 							teat = eat.objects.filter(uid=user_id, datetime__contains=dt).aggregate(Sum('calories'))
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='今日總攝取' + str(teat) + '大卡')	
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='今日總攝取' + teat + '大卡')	
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
