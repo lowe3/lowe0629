@@ -10,7 +10,7 @@ from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
 from funclapi.models import user, seven, wefamily, users, food, eat
-from django.db.models import Avg, Sum, Max, Min, Count
+# from django.db.models import Avg, Sum, Max, Min, Count
 import random
 
 
