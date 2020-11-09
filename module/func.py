@@ -70,14 +70,13 @@ def manageForm(event, mtext, user_id):
 		eitems = flist[4]
 		for fitems in food.objects.filter(items=eitems):
 			content='\n熱量:'+str(fitems.calories)+'大卡'
-			dt = datetime.now().strftime('%Y-%m-%d')
-			if not eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+			if not eat.objects.filter(uid=user_id, datetime=edate).exists():
 				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=fitems.calories, times=1)  #寫入資料庫
 				unit.save()
 				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content))
 			else:
-				etotal = eat.objects.lastest(uid=user_id, datetime__contains=dt).total + food.objects.filter(items=eitems)
-				etimes = eat.objects.lastest(uid=user_id, datetime__contains=dt).times + 1
+				etotal = eat.objects.lastest(uid=user_id, datetime=edate).total + food.objects.filter(items=eitems)
+				etimes = eat.objects.lastest(uid=user_id, datetime=edate).times + 1
 				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edatetime, items=eitems, calories=fitems.calories, total=etotal, times=etimes)  #寫入資料庫
 				unit.save()
 				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content))
