@@ -65,13 +65,22 @@ def sendQuickreply(event):  #快速選單
 def manageForm(event, mtext, user_id):
 	try:
 		flist = mtext[3:].split()
-		edatetime = flist[0]		#取得輸入資料
-		eitems = flist[3]
+		edate = flist[0]
+		etime = flist[1]#取得輸入資料
+		eitems = flist[4]
 		for fitems in food.objects.filter(items=eitems):
 			content='\n熱量:'+str(fitems.calories)+'大卡'
-			unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edatetime, items=eitems, calories=fitems.calories)  #寫入資料庫
-			unit.save()
-			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edatetime+'\n產品名稱：'+eitems+content))
+			dt = datetime.now().strftime('%Y-%m-%d')
+			if not eat.objects.filter(uid=user_id, datetime__contains=dt).exists():
+				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=fitems.calories, times=1)  #寫入資料庫
+				unit.save()
+				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content))
+			else:
+				etotal = eat.objects.lastest(uid=user_id, datetime__contains=dt).total + food.objects.filter(items=eitems)
+				etimes = eat.objects.lastest(uid=user_id, datetime__contains=dt).times + 1
+				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edatetime, items=eitems, calories=fitems.calories, total=etotal, times=etimes)  #寫入資料庫
+				unit.save()
+				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 
