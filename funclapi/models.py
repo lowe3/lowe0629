@@ -45,6 +45,7 @@ class eat(models.Model):
 	datetime = models.CharField(max_length=100, null=False)
 	items = models.CharField(max_length=250, null=False)
 	calories = models.DecimalField(max_digits=10, decimal_places=1)
+	# total = models.DecimalField(max_digits=10, decimal_places=1)
 	
 	def _str_(self):
 		return self.uid		
