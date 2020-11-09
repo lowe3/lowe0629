@@ -71,7 +71,7 @@ def manageForm(event, mtext, user_id):
 		for fitems in food.objects.filter(items=eitems):
 			content='\n熱量:'+str(fitems.calories)+'大卡'
 			# if not (eat.objects.filter(Q(uid=user_id) & Q(datetime=edate)).exists()):
-			unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=food.objects.filter(items=eitems).calories, total=food.objects.filter(items=eitems).calories, times=int(1))  #寫入資料庫
+			unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=food.objects.filter(items=eitems).calories, total=food.objects.filter(items=eitems).calories, times=int('1'))  #寫入資料庫
 			unit.save()
 			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期:'+edate+'\n時間：'+etime+'\n產品名稱：'+eitems+content))
 			# else:
