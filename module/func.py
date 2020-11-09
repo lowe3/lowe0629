@@ -74,7 +74,7 @@ def manageForm(event, mtext, user_id):
 				# times = int(1)
 				# unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=food.objects.filter(items=eitems).calories, total=food.objects.filter(items=eitems).calories, times=times)  #寫入資料庫
 				# unit.save()
-				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期:'+edate+'\n時間：'+etime+'\n產品名稱：'+eitems+content))
+			line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期:'+edate+'\n時間：'+etime+'\n產品名稱：'+eitems+content))
 			# else:
 				# etotal = eat.objects.filter(uid=user_id, datetime=edate).lastest('total') + food.objects.filter(items=eitems)
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).lastest('times') + 1
