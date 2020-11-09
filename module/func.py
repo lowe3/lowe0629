@@ -79,7 +79,7 @@ def manageForm(event, mtext, user_id):
 			else:
 				# etotal = eat.objects.filter(uid=user_id, datetime=edate).last().total + food.objects.filter(items=eitems).calories
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).last().times + 1
-				etotal = eat.objects.filter(uid=user_id, datetime=edate).last()
+				etotal = eat.objects.last(uid=user_id, datetime=edate)
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).latest('times') + 1
 				# eunit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=etotal, times=etimes)  #寫入資料庫
 				# eunit.save()
