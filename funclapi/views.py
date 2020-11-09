@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-from .models import user, wefamily, food, eat
+from .models import user, wefamily, food
 from datetime import datetime, timedelta
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
-from funclapi.models import user, wefamily, food, eat
+from funclapi.models import user, wefamily, food
 from django.db.models import Avg, Sum, Max, Min, Count
 import random
 
@@ -53,8 +53,8 @@ def callback(request):
 							# tcal = toeat.annotate(Sum('calories'))
 							# content = eat.objects.filter(uid=user_id, datetime__contains=dt).calories
 							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tcal))
-					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
-						func.manageForm(event, mtext, user_id)
+					# elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
+						# func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
 						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1654959608-r96wdMBL'))
 					# elif mtext[-2:] == '公分':
