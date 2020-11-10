@@ -10,7 +10,7 @@ from linebot.models import MessageEvent, TextSendMessage, TextMessage
 from module import func
 from linebot.models import *
 from funclapi.models import user, wefamily, food, eat
-from django.db.models import Avg, Sum, Max, Min, Count
+from decimal import Decimal
 import random
 
 
@@ -48,7 +48,7 @@ def callback(request):
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								etdee = int(feat.lost().tdee)
+								etdee = Decimal(feat.lost().tdee)
 								tde = str(etdee)
 								# surplus =str(etdee-feat.last().total)
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tde))
