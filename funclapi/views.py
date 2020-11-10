@@ -49,7 +49,7 @@ def callback(request):
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							for feat in eat.objects.filter(uid=user_id, datetime=dt):
 								etdee = feat.tdee
-								tde = etdee[4:]
+								tde = etdee[:4]
 								# surplus =str(etdee-feat.last().total)
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tde))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
