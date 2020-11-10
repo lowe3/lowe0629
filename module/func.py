@@ -75,14 +75,14 @@ def manageForm(event, mtext, user_id):
 				unit.save()
 				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期:'+edate+'\n時間：'+etime+'\n產品名稱：'+eitems +content))
 			else:
-				# etotal = eat.objects.filter(uid=user_id, datetime=edate).last().total + food.objects.filter(items=eitems).calories
-				# etimes = eat.objects.filter(uid=user_id, datetime=edate).last().times + 1
-				etotal = str(eat.objects.filter(uid=user_id, datetime=edate).last().calories)
+				etotal = eat.objects.filter(uid=user_id, datetime=edate).last().total + food.objects.filter(items=eitems).calories
+				etimes = eat.objects.filter(uid=user_id, datetime=edate).last().times + 1
+				# etotal = str(eat.objects.filter(uid=user_id, datetime=edate).last().total)
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).latest('times') + 1
-				# eunit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=etotal, times=etimes)  #寫入資料庫
-				# eunit.save()
-				line_bot_api.reply_message(event.reply_token, TextSendMessage(text=etotal))
-				# line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content+etotal))
+				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=etotal, times=etimes)  #寫入資料庫
+				unit.save()
+				# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=etotal))
+				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期時間：'+edate+etime+'\n產品名稱：'+eitems+content))
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 
