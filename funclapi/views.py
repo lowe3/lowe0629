@@ -51,10 +51,10 @@ def callback(request):
 								etdee = feat.tdee
 								tde = etdee[:6]
 								td = Decimal(tde)
-								# surplus = td-feat.last().total
-								# ssp = str(surplus)
+								surplus = td-feat.last().total
+								ssp = str(surplus)
 								# surplus =str(etdee-feat.last().total)
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tde))
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=ssp))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
