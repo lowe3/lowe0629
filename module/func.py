@@ -67,6 +67,7 @@ def manageForm(event, mtext, user_id):
 		flist = mtext[3:].split()
 		edate = flist[0]
 		etime = flist[1]#取得輸入資料
+		estore = flist[2]
 		eitems = flist[4]
 		for fitems in food.objects.filter(items=eitems):
 			content='\n熱量:'+str(fitems.calories)+'大卡'
@@ -75,7 +76,8 @@ def manageForm(event, mtext, user_id):
 				unit.save()
 				line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的餐點紀錄已成功輸入，輸入內容如下:'+'\n日期:'+edate+'\n時間：'+etime+'\n產品名稱：'+eitems +content))
 			else:
-				etotal = str(eat.objects.filter(uid=user_id, datetime=edate).last().total + food.objects.filter(items=eitems).calories)
+				etotal = str(eat.objects.filter(uid=user_id, datetime=edate).last().total + food.objects.get(items=eitems, convenience=estore).calories)
+				# etotal = str(123+23)
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).last().times + 1
 				# etotal = str(eat.objects.filter(uid=user_id, datetime=edate).last().total)
 				# etimes = eat.objects.filter(uid=user_id, datetime=edate).latest('times') + 1
