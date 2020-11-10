@@ -48,7 +48,7 @@ def callback(request):
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								etdee = Decimal(feat.lost().tdee)
+								etdee = int(feat.lost().tdee[4:0])
 								tde = str(etdee)
 								# surplus =str(etdee-feat.last().total)
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=tde))
