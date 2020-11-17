@@ -48,7 +48,7 @@ def callback(request):
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								etdee = type(feat.total)
+								etdee = feat.total
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
