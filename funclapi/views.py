@@ -83,18 +83,13 @@ def callback(request):
 							'7-11的歐姆蛋明太子海鮮飯，熱量577大卡。','7-11的義式嫩雞花椰菜飯，熱量258大卡。','7-11的義式嫩雞花椰菜飯，熱量258大卡。','7-11的一鍋燒-日式親子丼，熱量563大卡。',
 							'7-11的韓式炸雞起司丼，熱量679大卡。','7-11的歐姆蛋牛肉咖哩飯，熱量665大卡。','7-11的繽紛鮮蔬烤雞便當，熱量353大卡。','7-11的雙拼起司奶香焗飯，熱量584大卡。',
 							'7-11的泰式綠咖哩飯-辣，熱量548大卡。'])))
-					# elif mtext == '飯類':
-						# dt = datetime.now().strftime('%Y-%m-%d')
-						# if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							# etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
-							# surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
-								# tde = ste(etdee)
-								# tde = etdee[:6]
-								# td = Decimal(tde)
-								# surplus = td-feat.last().total
-								# ssp = str(surplus)
-								# surplus =str(etdee-feat.last().total)
-								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(kind='飯類', calories__lte=surplus)])))
+					elif mtext == '飯類':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(kind='飯類', calories__lte=sp).items])))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
