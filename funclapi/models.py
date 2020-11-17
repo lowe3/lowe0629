@@ -26,11 +26,11 @@ class wefamily(models.Model):
 	picture = models.CharField(max_length=250, null=True)
 	
 	def _str_(self):
-		return self.items
-
+		return self.items	
+		
 class food(models.Model):
 	items = models.CharField(max_length=250, null=False)
-	calories = models.DecimalField(max_digits=10, decimal_places=1)
+	calories = models.FloatField()
 	picture = models.CharField(max_length=250, null=True)
 	convenience = models.CharField(max_length=100, null=False)
 	kind = models.CharField(max_length=100, null=False)
@@ -44,10 +44,9 @@ class eat(models.Model):
 	tdee = models.CharField(max_length=100, null=False)
 	datetime = models.CharField(max_length=100, null=False)
 	items = models.CharField(max_length=250, null=False)
-	calories = models.DecimalField(max_digits=10, decimal_places=1)
-	total = models.DecimalField(max_digits=10, decimal_places=1)
+	calories = models.FloatField()
+	total = models.FloatField()
 	times = models.IntegerField(default=0)
 	
 	def _str_(self):
-		return self.uid		
-
+		return self.uid
