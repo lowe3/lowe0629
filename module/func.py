@@ -66,7 +66,7 @@ def manageForm(event, mtext, user_id):
 		etime = flist[1]#取得輸入資料
 		estore = flist[2]
 		eitems = flist[4]
-		for fitems in food.objects.filter(items=eitems, convenience=estore):
+		for fitems in food.objects.get(items=eitems, convenience=estore):
 			content='\n熱量:'+str(fitems.calories)+'大卡'
 			if not (eat.objects.filter(uid=user_id, datetime=edate).exists()):
 				unit = eat.objects.create(uid=user_id, bmr=user.objects.get(uid=user_id).bmr, tdee=user.objects.get(uid=user_id).tdee, datetime=edate, items=eitems, calories=fitems.calories, total=fitems.calories, times=1)  #寫入資料庫
