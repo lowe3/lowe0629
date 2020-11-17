@@ -44,11 +44,12 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
-					# elif mtext == '@飯類':
-						# dt = datetime.now().strftime('%Y-%m-%d')
-						# if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							# for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								# etdee = feat.total
+					elif mtext == '@飯類':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							for feat in eat.objects.filter(uid=user_id, datetime=dt):
+								etdee = float(feat.tdee)
+								surplus = feat.last().total
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
@@ -91,7 +92,7 @@ def callback(request):
 						ptdee = flist[6]
 						user_id = event.source.user_id
 						if user.objects.get(uid=user_id):
-							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr, tdee=ptdee)  #寫入資料庫
+							user.objects.filter(uid=user_id).update(height=pheight, weight=pweight, age=page, gender=pgender, bmr=pbmr[:8], tdee=ptdee[:8])  #寫入資料庫
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您的基本資料已成功輸入，輸入內容如下:'+'\n身高：'+pheight+'\n體重：'+ pweight+'\n年齡：' + page+'\n性別：' + pgender+'\n基礎代謝率：' + pbmr[:7]+'\n每日總消耗熱量：' + ptdee[:7]))
 					elif food.objects.filter(items__contains=mtext).exists():
 						for fitems in food.objects.filter(items__contains=mtext):
