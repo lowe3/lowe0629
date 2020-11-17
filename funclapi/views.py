@@ -45,11 +45,21 @@ def callback(request):
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
 					elif mtext == '@飯類':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(
+							text = random.choice(['全家的蒲燒鰻魚飯糰，熱量151大卡。',
+							'全家的龍蝦風味細卷，熱量180大卡。',
+							'全家的火腿玉米細卷，熱量184大卡。',
+							'全家的博多明太子鮭魚飯糰，熱量171大卡。',
+							'全家的雞肉飯飯糰，熱量177大卡。',
+							'全家的鹽蔥燒肉飯糰，熱量191大卡。',
+							'全家的薑燒豚肉烤飯糰，熱量195大卡。',
+							'全家的薑燒豚肉烤飯糰，熱量195大卡。',
+							])))
+					elif mtext == '飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								etdee = float(feat.tdee)
-								surplus = (feat.last().total-float)/2
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
