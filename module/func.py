@@ -50,9 +50,6 @@ def sendQuickreply(event):  #快速選單
                         action=MessageAction(label="水果", text="@水果")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="醬料", text="@醬料")
-                    ),
-                    QuickReplyButton(
                         action=MessageAction(label="其他", text="@其他")
                     ),					
                 ]

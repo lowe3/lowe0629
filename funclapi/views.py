@@ -53,20 +53,35 @@ def callback(request):
 							'全家的雞肉飯飯糰，熱量177大卡。',
 							'全家的鹽蔥燒肉飯糰，熱量191大卡。',
 							'全家的薑燒豚肉烤飯糰，熱量195大卡。',
-							'全家的薑燒豚肉烤飯糰，熱量195大卡。'
+							'全家的蜜汁燒肉飯糰，熱量177大卡。',
+							'全家的蔥爆牛柳飯糰，熱量176大卡。',
+							'全家的泡菜燒肉飯糰，熱量179大卡。',
+							'全家的鮑菇脆筍飯糰，熱量184大卡。',
+							'全家的壽喜燒牛肉飯糰，熱量196大卡。',
+							'全家的東港櫻花蝦油飯，熱量692大卡。',
+							'全家的雙麥鮮蔬米漢堡，熱量302.3大卡。',
+							'全家的大飯糰鮪魚，熱量300大卡。',
+							'全家的海陸雙拼壽司組，熱量328大卡。',
+							'全家的火腿玉米炒飯，熱量408大卡。',
+							'全家的肉絲蛋炒飯，熱量414大卡。',
+							'全家的大口特濃咖哩豬排飯糰，熱量339大卡。',
+							'全家的香腸烤雞傳統飯糰，熱量395大卡。',
+							'全家的泡菜起司豬排黑秈飯糰，熱量340大卡。',
+							'全家的大口義式香草烤雞飯糰，熱量341大卡。',
+							'全家的大口炙燒培根漢堡排飯糰，熱量388大卡。',							
 							])))
-					elif mtext == '飯類':
-						dt = datetime.now().strftime('%Y-%m-%d')
-						if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
-							surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
+					# elif mtext == '飯類':
+						# dt = datetime.now().strftime('%Y-%m-%d')
+						# if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							# etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							# surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
 								# surplus = td-feat.last().total
 								# ssp = str(surplus)
 								# surplus =str(etdee-feat.last().total)
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(kind='飯類', calories__lte=surplus)])))
+								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(kind='飯類', calories__lte=surplus)])))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
