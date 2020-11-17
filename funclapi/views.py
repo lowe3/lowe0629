@@ -55,18 +55,18 @@ def callback(request):
 							'全家的薑燒豚肉烤飯糰，熱量195大卡。',
 							'全家的薑燒豚肉烤飯糰，熱量195大卡。'
 							])))
-					# elif mtext == '飯類':
-						# dt = datetime.now().strftime('%Y-%m-%d')
-						# if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							# etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
-							# surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
+					elif mtext == '飯類':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = (eat.objects.filter(uid=user_id, datetime=dt).last().total-etdee)/2
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
 								# surplus = td-feat.last().total
 								# ssp = str(surplus)
 								# surplus =str(etdee-feat.last().total)
-								# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(calories__lte=surplus)])))
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=random.choice([food.objects.filter(kind='飯類', calories__lte=surplus)])))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
