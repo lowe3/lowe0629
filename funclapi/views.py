@@ -44,12 +44,12 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
-					elif mtext == '@飯類':
-						dt = datetime.now().strftime('%Y-%m-%d')
-						if eat.objects.filter(uid=user_id, datetime=dt).exists():
-							for feat in eat.objects.filter(uid=user_id, datetime=dt):
-								etdee = float(feat.tdee)
-								surplus = feat.last().total
+					# elif mtext == '@飯類':
+						# dt = datetime.now().strftime('%Y-%m-%d')
+						# if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							# for feat in eat.objects.filter(uid=user_id, datetime=dt):
+								# etdee = float(feat.tdee)
+								# surplus = feat.last().total
 								# tde = ste(etdee)
 								# tde = etdee[:6]
 								# td = Decimal(tde)
