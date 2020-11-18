@@ -90,9 +90,9 @@ def callback(request):
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
 							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
-							#line_bot_api.reply_message(event.reply_token, TextSendMessage(text='AAA'))
-							for item in food.objects.get(id=220):
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+item.items))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=mtext))
+							#for item in food.objects.get(id=220):
+								#line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+item.items))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
