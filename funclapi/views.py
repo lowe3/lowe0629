@@ -44,58 +44,96 @@ def callback(request):
 					mtext = event.message.text
 					if mtext == '推薦菜單':
 						func.sendQuickreply(event)
-					elif mtext == '@飯類':
-						line_bot_api.reply_message(event.reply_token, TextSendMessage(
-							text = random.choice(['全家的蒲燒鰻魚飯糰，熱量151大卡。',
-							'全家的龍蝦風味細卷，熱量180大卡。','全家的火腿玉米細卷，熱量184大卡。','全家的博多明太子鮭魚飯糰，熱量171大卡。',
-							'全家的雞肉飯飯糰，熱量177大卡。','全家的鹽蔥燒肉飯糰，熱量191大卡。','全家的薑燒豚肉烤飯糰，熱量195大卡。',
-							'全家的蜜汁燒肉飯糰，熱量177大卡。','全家的蔥爆牛柳飯糰，熱量176大卡。','全家的泡菜燒肉飯糰，熱量179大卡。',
-							'全家的鮑菇脆筍飯糰，熱量184大卡。','全家的壽喜燒牛肉飯糰，熱量196大卡。','全家的東港櫻花蝦油飯，熱量692大卡。',
-							'全家的雙麥鮮蔬米漢堡，熱量302.3大卡。','全家的大飯糰鮪魚，熱量300大卡。','全家的海陸雙拼壽司組，熱量328大卡。',
-							'全家的火腿玉米炒飯，熱量408大卡。','全家的肉絲蛋炒飯，熱量414大卡。','全家的大口特濃咖哩豬排飯糰，熱量339大卡。',
-							'全家的香腸烤雞傳統飯糰，熱量395大卡。','全家的泡菜起司豬排黑秈飯糰，熱量340大卡。','全家的大口義式香草烤雞飯糰，熱量341大卡。',
-							'全家的大口炙燒培根漢堡排飯糰，熱量388大卡。','全家的海鮮沙拉握壽司，熱量413大卡。','全家的海陸沙拉握壽司，熱量430大卡。',
-							'全家的大口塔香烤雞五穀米飯糰，熱量434大卡。','全家的大口燒豚考績雙拼飯飯糰，熱量460大卡。','全家的大口宮保雞丁飯糰，熱量408大卡。',
-							'全家的大口麻婆豆腐雞排飯糰，熱量429大卡。','全家的紅藜蔬食炒飯，熱量515大卡。','全家的輕鬆生活素三杯炒飯，熱量604大卡。',
-							'全家的輕鬆生活蝦仁炒飯，熱量539大卡。','全家的輕鬆生活鮭魚炒飯，熱量556大卡。','全家的韓式泡菜烤肉拌飯，熱量568大卡。',
-							'全家的泰式椒麻雞濃奶油燉飯，熱量568大卡。','全家的台式香腸炒飯，熱量796大卡。','全家的法式松露烤雞燉飯，熱量503大卡。','全家的新招牌炸雞腿便當，熱量574大卡。',
-							'全家的黑胡椒烤雞彩便當，熱量510大卡。','全家的健身G肉餐盒，熱量446大卡。','全家的迷迭香烤雞彩便當，熱量414大卡。','全家的鐵板滑蛋豬排丼，熱量673大卡。',
-							'全家的黑胡椒豬柳燴飯，熱量610大卡。','全家的沙茶豬肉燴飯，熱量702大卡。','全家的日式雞五目烤飯糰，熱量236大卡。','全家的燒肉牛五花烤飯糰，熱量233大卡。',
-							'全家的明太子龍蝦風味飯糰，熱量212大卡。','全家的日式胡麻雞肉超級大麥飯糰，熱量209大卡。','全家的肉鬆飯糰，熱量245大卡。','全家的明太子龍蝦風味飯糰，熱量212大卡。',
-							'全家的柴魚乳酪超級大麥飯糰，熱量242大卡。','全家的鮪魚飯糰，熱量208大卡。','全家的野郎炙燒培根卷飯糰，熱量233大卡。','全家的起司厚切豬排手卷，熱量249大卡。',
-							'全家的稻荷壽司，熱量256大卡。','全家的豬排厚蛋麻婆豆腐飯糰，熱量200大卡。','全家的烤雞排厚蛋野蔬咖哩飯糰，熱量224大卡。','全家的照燒烤雞手卷，熱量229大卡。',
-							'全家的大飯糰松露野菇烤雞，熱量251大卡。','全家的龍蝦風味魚卵手卷，熱量293大卡。','全家的韓式飯卷-泡菜燒肉，熱量254大卡。','全家的韓式飯卷-醬燒牛肉，熱量293大卡。',
-							'全家的大飯糰辛口咖哩雞，熱量245大卡。','全家的大飯糰韓式春川辣雞，熱量279大卡。','全家的韓式飯卷-辣醬鮪魚，熱量292大卡。','全家的泰式打拋燴飯，熱量252大卡。',
-							'7-11的新極上飯糰-霜降牛，熱量264大卡。','7-11的炙燒牛小排飯糰，熱量206大卡。','7-11的肉鬆飯糰，熱量210大卡。','7-11的鮪魚飯糰，熱量198大卡。',
-							'7-11的博多明太子鮭魚飯糰，熱量181大卡。','7-11的黑胡椒烤豬里肌飯糰，熱量190大卡。','7-11的宗家府泡菜燒肉飯糰，熱量196大卡。','7-11的開丼握便當-麻婆烤雞腿排，熱量492大卡。',
-							'7-11的鯖魚紅藜御膳便當，熱量551大卡。','7-11的明太子雞唐揚便當，熱量508大卡。','7-11的海鮮起司焗飯，熱量534大卡。','7-11的握便當-日式炸豬排丼，熱量523大卡。',
-							'7-11的黑胡椒牛柳燴飯，熱量597大卡。','7-11的滑蛋雞排丼，熱量583大卡。','7-11的韓式起司炸雞炒飯，熱量587大卡。',
-							'7-11的新極上飯糰-炙燒明太子，熱量198大卡。','7-11的新極上飯糰-鹽烤松阪豬，熱量198大卡。','7-11的泡菜燒肉飯卷，熱量403大卡。','7-11的炙燒雪花牛飯糰，熱量213大卡。',
-							'7-11的肉鬆玉子雙手卷，熱量383大卡。','7-11的炙燒明太子鮭魚飯糰，熱量191大卡。','7-11的秋鮭鮪魚雙手卷，熱量348大卡。',
-							'7-11的鹹蛋黃肉鬆飯糰，熱量274大卡。','7-11的香草烤雞蛋飯堡，熱量321大卡。','7-11的握便當-滑蛋雞排丼，熱量421大卡。','7-11的握便當-鹽烤燒肉雙拼，熱量495大卡。',
-							'7-11的海鮮沙拉花壽司，熱量419大卡。','7-11的壹番屋-雙起司咖哩雞肉飯糰，熱量248大卡。','7-11的海陸雙拼壽司組，熱量490大卡。','7-11的鮭魚海帶芽飯糰，熱量187大卡。',
-							'7-11的握便當-經典奮起湖，熱量389大卡。','7-11的明太子鮭魚烤飯糰，熱量205大卡。','7-11的雙蔬鮪魚飯糰，熱量209大卡。','7-11的繼光香香雞-蒜香炸雞飯糰，熱量216大卡。',
-							'7-11的泰式打拋雞飯糰，熱量221大卡。','7-11的石安牧場溏心蛋筍飯飯糰，熱量182大卡。','7-11的哇沙米鮭魚飯糰，熱量212大卡。','7-11的泡菜燒肉飯糰，熱量195大卡。',
-							'7-11的蔥鹽燒肉飯糰，熱量210大卡。','7-11的御選肉鬆飯糰，熱量213大卡。','7-11的雞肉飯飯糰，熱量197大卡。','7-11的魚卵小龍蝦沙拉飯糰，熱量211大卡。',
-							'7-11的新極上飯糰-鮭魚鮭魚卵，熱量190大卡。','7-11的握便當-黑胡椒烤雞排，熱量380大卡。','7-11的招牌雙手卷，熱量434大卡。','7-11的海鮮雙手卷，熱量428大卡。',
-							'7-11的京都豆皮壽司，熱量278大卡。','7-11的奮起湖雙拼便當，熱量656大卡。','7-11的經典排骨便當，熱量678大卡。','7-11的麻婆豆腐燴飯，熱量644大卡。',
-							'7-11的經典奮起湖便當，熱量593大卡。','7-11的烤雞起司肉醬焗飯，熱量578大卡。','7-11的松露蕈菇雞肉燉飯，熱量496大卡。',
-							'7-11的歐姆蛋明太子海鮮飯，熱量577大卡。','7-11的義式嫩雞花椰菜飯，熱量258大卡。','7-11的義式嫩雞花椰菜飯，熱量258大卡。','7-11的一鍋燒-日式親子丼，熱量563大卡。',
-							'7-11的韓式炸雞起司丼，熱量679大卡。','7-11的歐姆蛋牛肉咖哩飯，熱量665大卡。','7-11的繽紛鮮蔬烤雞便當，熱量353大卡。','7-11的雙拼起司奶香焗飯，熱量584大卡。',
-							'7-11的泰式綠咖哩飯-辣，熱量548大卡。'])))
 					elif mtext == '飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
-							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=mtext))
-							#for item in food.objects.get(id=220):
-							# item = food.objects.filter(kind=mtext, calories__lte=sp).items
 							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							itt = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+itt))
+							rice = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+rice))
+					elif mtext == '麵類':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							noo = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+noo))
+					elif mtext == '沙拉':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							salad = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+salad))
+					elif mtext == '麵包':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							bread = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+bread))			
+					elif mtext == '飲料':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							drink = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+drink))	
+					elif mtext == '關東煮':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							kt = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+kt))
+					elif mtext == '甜點':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							sw = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+sw))
+					elif mtext == '湯類':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							soup = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+soup))	
+					elif mtext == '水果':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							fruit = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+fruit))	
+					elif mtext == '其他':
+						dt = datetime.now().strftime('%Y-%m-%d')
+						if eat.objects.filter(uid=user_id, datetime=dt).exists():
+							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
+							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
+							sp = surplus/2
+							item = food.objects.filter(kind=mtext, calories__lte=sp)
+							other = choice(item).items
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+other))							
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
