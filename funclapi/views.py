@@ -92,8 +92,9 @@ def callback(request):
 							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
 							# line_bot_api.reply_message(event.reply_token, TextSendMessage(text=mtext))
 							#for item in food.objects.get(id=220):
-							item = food.objects.filter(kind=mtext, calories__lte=sp).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+ choice(list(item.keys()))))
+							# item = food.objects.filter(kind=mtext, calories__lte=sp).items
+							item = random.choice(list(food.objects.filter(kind=mtext, calories__lte=sp).items))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+item))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
