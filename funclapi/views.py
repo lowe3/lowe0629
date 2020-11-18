@@ -91,7 +91,7 @@ def callback(request):
 							sp = surplus/2
 							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
 							reit_list = food.objects.filter(kind='飯類', calories__lte=200).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reit_list[1]))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reit_list))
 						else:
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=發生錯誤!))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
