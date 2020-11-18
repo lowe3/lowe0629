@@ -89,8 +89,9 @@ def callback(request):
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=choice(reit_list)))
+							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
+							reit_list = food.objects.filter(kind='飯類', calories__lte=sp)[0]
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reit_list.items))
 						else:
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=發生錯誤!))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
