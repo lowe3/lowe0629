@@ -23,34 +23,34 @@ def sendQuickreply(event):  #快速選單
             quick_reply=QuickReply(
                 items=[
                     QuickReplyButton(
-                        action=MessageAction(label="飯類", text="@飯類")
+                        action=MessageAction(label="飯類", text="飯類")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="麵類", text="@麵類")
+                        action=MessageAction(label="麵類", text="麵類")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="沙拉", text="@沙拉")
+                        action=MessageAction(label="沙拉", text="沙拉")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="麵包", text="@麵包")
+                        action=MessageAction(label="麵包", text="麵包")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="飲料", text="@飲料")
+                        action=MessageAction(label="飲料", text="飲料")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="關東煮", text="@關東煮")
+                        action=MessageAction(label="關東煮", text="關東煮")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="甜點", text="@甜點")
+                        action=MessageAction(label="甜點", text="甜點")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="湯類", text="@湯類")
+                        action=MessageAction(label="湯類", text="湯類")
                     ),	
                     QuickReplyButton(
-                        action=MessageAction(label="水果", text="@水果")
+                        action=MessageAction(label="水果", text="水果")
                     ),
                     QuickReplyButton(
-                        action=MessageAction(label="其他", text="@其他")
+                        action=MessageAction(label="其他", text="其他")
                     ),					
                 ]
             )
