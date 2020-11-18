@@ -89,9 +89,8 @@ def callback(request):
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							reit_list = food.objects.filter(kind='飯類', calories__lte=sp)
-							for reit in reit_list:
-								line_bot_api.reply_message(event.reply_token, TextSendMessage(text=choice(reit.items)))
+							reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=choice(reit_list)))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
