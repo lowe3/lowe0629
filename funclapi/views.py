@@ -50,9 +50,16 @@ def callback(request):
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							rice = choice(item)
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+rice.convenience+'的'+rice.items))
+							if surplus < 151:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合攝取飯類食物喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								rice = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+rice.convenience+'的'+rice.items))
+						elif :
+							item = food.objects.filter(kind=mtext)
+							ri = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+ri.convenience+'的'+ri.items))
 					elif mtext == '麵類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
