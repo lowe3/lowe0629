@@ -56,7 +56,7 @@ def callback(request):
 								item = food.objects.filter(kind=mtext, calories__lte=sp)
 								rice = choice(item)
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+rice.convenience+'的'+rice.items))
-						elif :
+						else :
 							item = food.objects.filter(kind=mtext)
 							ri = choice(item)
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+ri.convenience+'的'+ri.items))
