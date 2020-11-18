@@ -66,27 +66,48 @@ def callback(request):
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							noo = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+noo))
+							if surplus < 162:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合攝取麵類食物喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								noo = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+noo.convenience+'的'+noo.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							noodle = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+noodle.convenience+'的'+noodle.items))
 					elif mtext == '沙拉':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							salad = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+salad))
+							if surplus < 32:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃沙拉喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								sal = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+sal.convenience+'的'+sal.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							salad = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+salad.convenience+'的'+salad.items))
 					elif mtext == '麵包':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							bread = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+bread))			
+							if surplus < 93:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃麵包喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								bre = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+bre.convenience+'的'+bre.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							bread = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+bread.convenience+'的'+bread.items))		
 					elif mtext == '飲料':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
@@ -94,53 +115,92 @@ def callback(request):
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
 							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							drink = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+drink))	
+							dri = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+dri.convenience+'的'+dri.items+'，但為了您的身體健康著想，還是希望您喝水。'))
+						else :
+							item = food.objects.filter(kind=mtext)
+							drink = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+drink.convenience+'的'+drink.items+'，但為了您的身體健康著想，還是希望您喝水。'))
 					elif mtext == '關東煮':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							kt = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+kt))
+							if surplus < 5:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃關東煮喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								kt = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+kt.convenience+'的'+kt.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							ktc = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+ktc.convenience+'的'+ktc.items))
 					elif mtext == '甜點':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							sw = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+sw))
+							if surplus < 146:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃甜點喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								swe = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+swe.convenience+'的'+swe.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							sweat = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+sweat.convenience+'的'+sweat.items))
 					elif mtext == '湯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							soup = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+soup))	
+							if surplus < 86:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合喝湯喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								sou = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+sou.convenience+'的'+sou.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							soup = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+soup.convenience+'的'+soup.items))
 					elif mtext == '水果':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							fruit = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+fruit))	
+							if surplus < 55:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃水果喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								fru = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+fru.convenience+'的'+fru.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							fruit = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+fruit.convenience+'的'+fruit.items))	
 					elif mtext == '其他':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							etdee = float(eat.objects.filter(uid=user_id, datetime=dt).last().tdee)
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
-							item = food.objects.filter(kind=mtext, calories__lte=sp)
-							other = choice(item).items
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+other))							
+							if surplus < 33:
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='根據您今天的飲食狀況，已不再適合吃這類的食物喔~'))
+							else:
+								item = food.objects.filter(kind=mtext, calories__lte=sp)
+								oth = choice(item)
+								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+oth.convenience+'的'+oth.items))
+						else :
+							item = food.objects.filter(kind=mtext)
+							other = choice(item)
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+other.convenience+'的'+other.items))						
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
