@@ -93,7 +93,7 @@ def callback(request):
 							for item in food.objects.get(kind='飯類', id=220):
 								line_bot_api.reply_message(event.reply_token, TextSendMessage(text='推薦給您：'+item.items))
 						else:
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=發生錯誤!))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='發生錯誤!'))
 					elif mtext[:3] == '$$$':  #處理LIFF傳回的FORM資料
 						func.manageForm(event, mtext, user_id)
 					elif mtext == '餐點紀錄':
