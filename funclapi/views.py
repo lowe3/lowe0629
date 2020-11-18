@@ -90,7 +90,7 @@ def callback(request):
 							surplus = etdee-eat.objects.filter(uid=user_id, datetime=dt).last().total
 							sp = surplus/2
 							# reit_list = list(food.objects.filter(kind='飯類', calories__lte=sp).items)
-							reit_list = food.objects.filter(kind='飯類', calories__lte=sp).items
+							reit_list = food.objects.filter(kind='飯類', calories__lte=200).items
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reit_list[1]))
 						else:
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text=發生錯誤!))
