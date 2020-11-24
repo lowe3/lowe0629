@@ -226,6 +226,8 @@ def callback(request):
 							'三餐應以全穀雜糧為主食。',
 							'多蔬食少紅肉，多粗食少精製。',
 							'飲食多樣化，選擇當季在地食材。'])))
+					elif mtext == '呼叫圖表':
+						line_bot_api.reply_message(event.reply_token, TextSendMessage(text='https://liff.line.me/1655267954-z4Z53lAZ'))
 					elif mtext[:3] == '###':  #處理LIFF傳回的FORM資料
 						flist = mtext[3:].split()
 						pheight = flist[0]  #取得輸入資料
