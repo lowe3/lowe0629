@@ -51,7 +51,7 @@ def sendQuickreply(event):  #快速選單
                     ),
                     QuickReplyButton(
                         action=MessageAction(label="其他", text="其他")
-                    ),					
+                    )					
                 ]
             )
         )
