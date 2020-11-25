@@ -43,12 +43,49 @@ def callback(request):
 						unit.save()	
 					mtext = event.message.text
 					if mtext == '推薦菜單':
+					message = TextSendMessage(
+						text='請選擇您現在想吃的種類',
+						quick_reply=QuickReply(
+							items=[
+								QuickReplyButton(
+									action=MessageAction(label="飯類", text="飯類")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="麵類", text="麵類")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="沙拉", text="沙拉")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="麵包", text="麵包")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="飲料", text="飲料")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="關東煮", text="關東煮")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="甜點", text="甜點")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="湯類", text="湯類")
+								),	
+								QuickReplyButton(
+									action=MessageAction(label="水果", text="水果")
+								),
+								QuickReplyButton(
+									action=MessageAction(label="其他", text="其他")
+								),					
+							]
+						)
+					)
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
 							ttotal = str(eat.objects.filter(uid=user_id, datetime=dt).last().total)
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日已攝取熱量：'+ttotal+'大卡'), func.sendQuickreply(event))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日已攝取熱量：'+ttotal+'大卡'), message)
 						else:
-							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日尚未飲食，熱量：0大卡'))
+							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日尚未飲食，熱量：0大卡', message))
 							# func.sendQuickreply(event)
 					elif mtext == '飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
