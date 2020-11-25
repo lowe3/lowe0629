@@ -20,7 +20,7 @@ def sendImage(event):
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 		
-def sendQuickreply(event, user_id):  #快速選單
+def sendQuickreply(event):  #快速選單
     try:
 		# dt = datetime.now().strftime('%Y-%m-%d')
 		# if eat.objects.filter(uid=user_id, datetime=dt).exists():
