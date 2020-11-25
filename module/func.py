@@ -55,11 +55,9 @@ def sendQuickreply(event):  #快速選單
 		dt = datetime.now().strftime('%Y-%m-%d')
 		if eat.objects.filter(uid=user_id, datetime=dt).exists():
 			ttotal = str(eat.objects.filter(uid=user_id, datetime=dt).last().total)
-			content = '您今日已攝取熱量：'+ttotal+'大卡'
-			line_bot_api.reply_message(event.reply_token,TextSendMessage(text=content, message))
+			line_bot_api.reply_message(event.reply_token,TextSendMessage(text='您今日已攝取熱量：'+ttotal+'大卡', message))
 		else:
-			content = '您今日尚未飲食，熱量：0大卡'
-			line_bot_api.reply_message(event.reply_token,TextSendMessage(text=content, message))
+			line_bot_api.reply_message(event.reply_token,TextSendMessage(text='您今日尚未飲食，熱量：0大卡', message))
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
 	
