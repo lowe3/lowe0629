@@ -4,6 +4,10 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage, ImageSendMessage, StickerSendMessage, LocationSendMessage, QuickReply, QuickReplyButton, MessageAction, ButtonsTemplate, URITemplateAction, ConfirmTemplate, PostbackTemplateAction, TemplateSendMessage
 import random
 from funclapi.models import wefamily, user, food, eat
+from linebot.models import *
+from datetime import datetime, timedelta
+from linebot.models import MessageEvent, TextSendMessage, TextMessage
+
 
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
 
@@ -16,7 +20,7 @@ def sendImage(event):
 	except:
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤!'))
 		
-def sendQuickreply(event):  #快速選單
+def sendQuickreply(event, user_id):  #快速選單
     try:
 		dt = datetime.now().strftime('%Y-%m-%d')
 		if eat.objects.filter(uid=user_id, datetime=dt).exists():

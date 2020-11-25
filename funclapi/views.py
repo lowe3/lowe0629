@@ -43,7 +43,7 @@ def callback(request):
 						unit.save()	
 					mtext = event.message.text
 					if mtext == '推薦菜單':
-						func.sendQuickreply(event)
+						func.sendQuickreply(event, user_id)
 					elif mtext == '飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
