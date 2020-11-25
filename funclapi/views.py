@@ -49,8 +49,8 @@ def callback(request):
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日已攝取熱量：'+eat.objects.filter(uid=user_id, datetime=dt).last().total+'大卡\n'))
 						else:
 							line_bot_api.reply_message(event.reply_token, TextSendMessage(text='您今日尚未飲食，熱量：0大卡'))
-							break
-						func.sendQuickreply(event)
+							# break
+						# func.sendQuickreply(event)
 					elif mtext == '飯類':
 						dt = datetime.now().strftime('%Y-%m-%d')
 						if eat.objects.filter(uid=user_id, datetime=dt).exists():
