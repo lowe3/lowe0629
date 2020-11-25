@@ -22,11 +22,11 @@ def sendImage(event):
 		
 def sendQuickreply(event, user_id):  #快速選單
     try:
-		dt = datetime.now().strftime('%Y-%m-%d')
-		if eat.objects.filter(uid=user_id, datetime=dt).exists():
-			content = '您今日已攝取熱量為:' + eat.objects.filter(uid=user_id, datetime=dt).last().total + '大卡' + '\n請選擇您現在想吃的食物種類'
-		else:
-			content = '您今日尚未攝取熱量。' + '\n請選擇您現在想吃的食物種類'
+		# dt = datetime.now().strftime('%Y-%m-%d')
+		# if eat.objects.filter(uid=user_id, datetime=dt).exists():
+			# content = '您今日已攝取熱量為:' + eat.objects.filter(uid=user_id, datetime=dt).last().total + '大卡' + '\n請選擇您現在想吃的食物種類'
+		# else:
+			# content = '您今日尚未攝取熱量。' + '\n請選擇您現在想吃的食物種類'
 		message = TextSendMessage(
 			text=content,
 			quick_reply=QuickReply(
